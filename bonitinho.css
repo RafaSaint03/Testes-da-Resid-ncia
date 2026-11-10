@@ -8,12 +8,12 @@
 }
 
 :root {
-    --bg-main: #140733;
-    --bg-sidebar: #19093B;
+    --bg-main: #140733;       
+    --bg-sidebar: #19093B;    
     --primary-pink: #ffaee0;
     --accent-cream: #FAEBD6;
     --card-cream: #fbf8f3;
-    --text-muted: #ffffff;
+    --text-muted: #ffffff;    
     --border-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -29,7 +29,6 @@ body {
     padding: 0 24px;
 }
 
-/* Header Landings */
 .header {
     padding: 24px 0;
     border-bottom: 1px solid var(--border-color);
@@ -120,7 +119,6 @@ body {
     transform: scale(1.02);
 }
 
-/* Hero Section */
 .hero-section {
     padding: 80px 0 100px 0;
     background: radial-gradient(circle at 80% 20%, #180C28 0%, var(--bg-main) 60%);
@@ -199,9 +197,17 @@ body {
     margin-left: 0;
 }
 
-.av-1 { background-color: #C8BAD6; }
-.av-2 { background-color: #FAEBD6; }
-.av-3 { background-color: var(--primary-pink); }
+.av-1 {
+    background-color: #C8BAD6;
+}
+
+.av-2 {
+    background-color: #FAEBD6;
+}
+
+.av-3 {
+    background-color: var(--primary-pink);
+}
 
 .social-text {
     font-size: 12px;
@@ -348,7 +354,6 @@ body {
     height: 100%;
 }
 
-/* Features */
 .features-section {
     padding: 100px 0;
     background-color: #FFFFFF;
@@ -421,7 +426,6 @@ body {
     line-height: 1.5;
 }
 
-/* Métricas */
 .metrics-section {
     background-color: var(--bg-main);
     padding: 60px 0;
@@ -465,7 +469,6 @@ body {
     color: var(--text-muted);
 }
 
-/* B2B Banner */
 .b2b-section {
     padding: 100px 0;
     background-color: var(--bg-main);
@@ -514,7 +517,6 @@ body {
     background-color: #180C28;
 }
 
-/* Footer Landings */
 .footer {
     background-color: #060012;
     padding: 80px 0 40px 0;
@@ -569,7 +571,7 @@ body {
     font-size: 12px;
 }
 
-/* Tela de Login */
+
 .login-page-body {
     background-color: var(--bg-main);
     min-height: 100vh;
@@ -663,21 +665,11 @@ body {
     color: #6D6274;
 }
 
-/* Link de Ajuda e Ícone duvida.png */
 .help-link {
     font-size: 13px;
     color: #C73B8F;
     text-decoration: none;
     font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.icon-help {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
 }
 
 .form-intro {
@@ -730,22 +722,11 @@ body {
     position: relative;
 }
 
-/* Botão e Ícone eye.png */
 .eye-btn {
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-}
-
-.icon-eye {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
 }
 
 .form-options {
@@ -804,7 +785,6 @@ body {
     font-weight: 600;
 }
 
-/* Box de Segurança e Ícone shield-check.png */
 .security-alert-box {
     background-color: #FAEBD6;
     border-radius: 12px;
@@ -816,13 +796,6 @@ body {
     font-size: 12px;
     color: #554A5E;
     line-height: 1.4;
-}
-
-.icon-shield {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    flex-shrink: 0;
 }
 
 .login-form-footer {
@@ -844,7 +817,11 @@ body {
     text-decoration: none;
 }
 
-/* Dashboard Interno */
+
+
+
+
+/* Estilos para o Dashboard Interno (Visão Geral) */
 .dashboard-body {
     background-color: var(--bg-main);
     color: #FFFFFF;
@@ -857,49 +834,23 @@ body {
     display: grid;
     grid-template-columns: 260px 1fr;
     min-height: 100vh;
-    transition: grid-template-columns .25s ease;
 }
 
-/* Sidebar com tom dedicado */
+/* Sidebar */
 .sidebar {
-    background-color: var(--bg-sidebar);
+    background-color: #0D0125;
     border-right: 1px solid var(--border-color);
     padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
-    transition: padding .25s ease;
-}
-
-.logo-inner {
-    display: flex;
-    align-items: center;
-    gap: 12px;
 }
 
 .sidebar-logo {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 24px;
-    justify-content: space-between;
-}
-
-.sidebar-toggle-btn {
-    background: #180C28;
-    border: 1px solid var(--border-color);
-    color: #FFFFFF;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    flex-shrink: 0;
-}
-
-.sidebar-toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
 }
 
 .logo-text-group {
@@ -925,36 +876,6 @@ body {
     letter-spacing: 1.5px;
     margin-bottom: 12px;
     font-weight: 700;
-    display: block;
-}
-
-/* Box da Conta/Empresa Gerenciada na Sidebar */
-.workspace-selector-box {
-    margin-bottom: 24px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-color);
-    padding: 12px;
-    border-radius: 12px;
-}
-
-.account-selector-sidebar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 6px;
-    cursor: pointer;
-}
-
-.account-selector-sidebar .acc-name {
-    font-size: 13px;
-    font-weight: 700;
-    color: #FFFFFF;
-}
-
-.account-selector-sidebar .acc-type {
-    font-size: 10px;
-    color: var(--primary-pink);
-    font-weight: 500;
 }
 
 .sidebar-nav {
@@ -986,25 +907,6 @@ body {
     background-color: var(--primary-pink);
     color: var(--bg-main);
     font-weight: 600;
-}
-
-/* Ícones da Sidebar (Ajuste de brilho para PNGs pretos) */
-.nav-icon {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    flex-shrink: 0;
-    filter: brightness(0) invert(0.85);
-    transition: filter 0.2s ease, transform 0.2s ease;
-}
-
-.nav-item.active .nav-icon {
-    filter: brightness(0);
-}
-
-.nav-item:hover .nav-icon {
-    filter: brightness(0) invert(1);
-    transform: scale(1.08);
 }
 
 .sidebar-footer-card {
@@ -1096,57 +998,21 @@ body {
     cursor: pointer;
 }
 
-/* Estado Recolhido da Sidebar */
-.app-container.collapsed {
-    grid-template-columns: 80px 1fr;
-}
-
-.app-container.collapsed .sidebar {
-    padding: 24px 12px;
-}
-
-.app-container.collapsed .sidebar-logo {
-    flex-direction: column;
-    gap: 12px;
-    justify-content: center;
-}
-
-.app-container.collapsed .logo-text-group,
-.app-container.collapsed .sidebar-section-title,
-.app-container.collapsed .nav-item span,
-.app-container.collapsed .sidebar-footer-card,
-.app-container.collapsed .user-info-text,
-.app-container.collapsed .workspace-selector-box .acc-text {
-    display: none;
-}
-
-.app-container.collapsed .workspace-selector-box {
-    padding: 8px 4px;
-    border: none;
-    background: transparent;
-}
-
-.app-container.collapsed .account-selector-sidebar {
-    justify-content: center;
-    margin-top: 0;
-}
-
-.app-container.collapsed .nav-item {
-    justify-content: center;
-    padding: 12px 0;
-    gap: 0;
-}
-
-.app-container.collapsed .user-profile-box {
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-}
 
 .main-content {
-    background-color: #0F0426;
+    background-color: #0F0426; /* Um degrau acima do fundo principal */
     display: flex;
     flex-direction: column;
+}
+
+/* Sidebar com o novo tom dedicado */
+.sidebar {
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Topbar do Dashboard */
@@ -1158,7 +1024,6 @@ body {
     align-items: center;
     border-bottom: 1px solid var(--border-color);
 }
-
 .breadcrumb {
     font-size: 13px;
     color: var(--text-muted);
@@ -1189,56 +1054,14 @@ body {
     font-size: 14px;
 }
 
-/* Perfil da Usuária Operadora na Topbar */
-.user-profile-topbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-left: 16px;
-    border-left: 1px solid var(--border-color);
-}
-
-.user-profile-topbar .user-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #FFFFFF;
-}
-
-.user-profile-topbar .user-role {
-    font-size: 11px;
-    color: var(--text-muted);
-}
-
 .account-selector {
     background: #180C28;
     border: 1px solid var(--border-color);
     padding: 6px 14px;
     border-radius: 10px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-}
-
-.acc-text {
-    display: flex;
     flex-direction: column;
-    line-height: 1.25;
-}
-
-.acc-badge {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: var(--primary-pink);
-    color: var(--bg-main);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-    flex-shrink: 0;
+    cursor: pointer;
 }
 
 .acc-name {
@@ -1251,7 +1074,6 @@ body {
     color: var(--text-muted);
 }
 
-/* Conteúdo */
 .content-wrapper {
     background-color: var(--card-cream);
     color: var(--bg-main);
@@ -1381,12 +1203,6 @@ body {
     font-size: 14px;
 }
 
-.card-icon-bg img {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-}
-
 .card-icon-bg.pink {
     background-color: var(--primary-pink);
     color: var(--bg-main);
@@ -1416,7 +1232,14 @@ body {
     font-size: 11px;
 }
 
-.badge-green,
+.badge-green {
+    background: rgba(110, 235, 174, 0.2);
+    color: #0D8249;
+    padding: 2px 6px;
+    border-radius: 99px;
+    font-weight: 700;
+}
+
 .badge-green-soft {
     background: rgba(110, 235, 174, 0.2);
     color: #0D8249;
@@ -1434,7 +1257,7 @@ body {
     font-size: 12px;
 }
 
-/* Gráficos e Alocação Standard */
+/* Gráficos e Alocação */
 .charts-row {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -1519,7 +1342,7 @@ body {
     white-space: nowrap;
 }
 
-/* Alocação Rosca Standard */
+/* Alocação Rosca */
 .donut-container {
     display: flex;
     align-items: center;
@@ -1582,12 +1405,23 @@ body {
     border-radius: 50%;
 }
 
-.dot.pink { background-color: var(--primary-pink); }
-.dot.purple { background-color: #C8BAD6; }
-.dot.dark { background-color: var(--bg-main); }
-.dot.gray { background-color: #D8C8FF; }
+.dot.pink {
+    background-color: var(--primary-pink);
+}
 
-/* Tabela Posições Standard */
+.dot.purple {
+    background-color: #C8BAD6;
+}
+
+.dot.dark {
+    background-color: var(--bg-main);
+}
+
+.dot.gray {
+    background-color: #D8C8FF;
+}
+
+/* Tabela Posições */
 .positions-table-box {
     margin-bottom: 40px;
 }
@@ -1644,7 +1478,7 @@ body {
     font-size: 12px;
 }
 
-/* Regras SPA */
+/* Regras para gerenciar as telas na mesma página (SPA) */
 .app-screen {
     display: none;
 }
@@ -1656,7 +1490,123 @@ body {
 }
 
 /* =========================================================
+   MENU RECOLHÍVEL + AJUSTES DA SIDEBAR
+   ========================================================= */
+.sidebar {
+    overflow: hidden;
+    transition: padding .25s ease;
+}
+
+.app-container {
+    transition: grid-template-columns .25s ease;
+}
+
+/* partes do cabeçalho do menu que não tinham estilo */
+.logo-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-logo {
+    justify-content: space-between;
+}
+
+.sidebar-toggle-btn {
+    background: #180C28;
+    border: 1px solid var(--border-color);
+    color: #FFFFFF;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.sidebar-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ícones (PNG) do menu e dos cards */
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.card-icon-bg img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+/* estado recolhido */
+.app-container.collapsed {
+    grid-template-columns: 80px 1fr;
+}
+
+.app-container.collapsed .sidebar {
+    padding: 24px 12px;
+}
+
+.app-container.collapsed .sidebar-logo {
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+}
+
+.app-container.collapsed .logo-text-group,
+.app-container.collapsed .sidebar-section-title,
+.app-container.collapsed .nav-item span,
+.app-container.collapsed .sidebar-footer-card,
+.app-container.collapsed .user-info-text {
+    display: none;
+}
+
+.app-container.collapsed .nav-item {
+    justify-content: center;
+    padding: 12px 0;
+    gap: 0;
+}
+
+.app-container.collapsed .user-profile-box {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* seletor de conta (topo) */
+.account-selector {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.acc-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.acc-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--primary-pink);
+    color: var(--bg-main);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* =========================================================
    VISÃO GERAL: GRÁFICOS E TABELA DE POSIÇÕES (versão .v2)
+   Escopado em .v2 para não afetar outras páginas.
    ========================================================= */
 .charts-row.v2 {
     grid-template-columns: 1.9fr 1fr;
@@ -1684,7 +1634,7 @@ body {
     margin-right: 6px;
 }
 
-/* Barras v2 */
+/* --- barras --- */
 .charts-row.v2 .date-filter.small {
     background: #F3E9E0;
     border-color: transparent;
@@ -1743,7 +1693,7 @@ body {
     border-radius: 6px;
 }
 
-/* Alocação Escura v2 & Botão 3 Pontinhos */
+/* --- alocação (cartão escuro) --- */
 .charts-row.v2 .allocation-box {
     background: var(--bg-main);
     border-color: #2A1244;
@@ -1759,30 +1709,9 @@ body {
 }
 
 .charts-row.v2 .dots-menu {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    color: #9A8FB0;
+    letter-spacing: 2px;
     cursor: pointer;
-    padding: 4px;
-    border-radius: 6px;
-    transition: background 0.2s ease;
-}
-
-.charts-row.v2 .dots-menu:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.icon-dots {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-    filter: brightness(0) invert(0.85); /* Inverte o ícone de preto para lavanda/branco */
-    transition: filter 0.2s ease, transform 0.2s ease;
-}
-
-.dots-menu:hover .icon-dots {
-    filter: brightness(0) invert(1);
-    transform: scale(1.1);
 }
 
 .charts-row.v2 .donut-container {
@@ -1832,12 +1761,23 @@ body {
     color: #FFFFFF;
 }
 
-.charts-row.v2 .dot.rf { background: #FF47B0; }
-.charts-row.v2 .dot.fu { background: #B8307F; }
-.charts-row.v2 .dot.ac { background: #7A4F8E; }
-.charts-row.v2 .dot.cx { background: #EADFD0; }
+.charts-row.v2 .dot.rf {
+    background: #FF47B0;
+}
 
-/* Tabela v2 */
+.charts-row.v2 .dot.fu {
+    background: #B8307F;
+}
+
+.charts-row.v2 .dot.ac {
+    background: #7A4F8E;
+}
+
+.charts-row.v2 .dot.cx {
+    background: #EADFD0;
+}
+
+/* --- tabela --- */
 .positions-table-box.v2 {
     padding: 0;
     overflow: hidden;
@@ -1906,10 +1846,21 @@ body {
     color: var(--bg-main);
 }
 
-.asset-icon.t-pink { background: #FBDDEF; }
-.asset-icon.t-lilac { background: #E4DAF2; }
-.asset-icon.t-peach { background: #FDE7D3; }
-.asset-icon.t-mint { background: #DCEDE9; }
+.asset-icon.t-pink {
+    background: #FBDDEF;
+}
+
+.asset-icon.t-lilac {
+    background: #E4DAF2;
+}
+
+.asset-icon.t-peach {
+    background: #FDE7D3;
+}
+
+.asset-icon.t-mint {
+    background: #DCEDE9;
+}
 
 .rent-positive {
     color: #0D8249;
@@ -1917,361 +1868,8 @@ body {
     font-size: 12px;
 }
 
-/* =========================================================
-   RESPONSIVIDADE (MEDIA QUERIES ORIGINAIS)
-   ========================================================= */
-
-/* Notebooks e telas médias (<= 1200px) */
-@media (max-width: 1200px) {
-    .metrics-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hero-container {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-
-    .center-border {
-        border-left: none;
-        padding-left: 0;
-    }
-}
-
-/* Tablets e telas pequenas (<= 980px) */
 @media (max-width: 980px) {
-    .charts-row,
     .charts-row.v2 {
         grid-template-columns: 1fr;
     }
-
-    .login-split-container {
-        grid-template-columns: 1fr;
-    }
-
-    .login-left-pane {
-        display: none;
-    }
-
-    .login-right-pane {
-        padding: 40px 30px;
-    }
-
-    .app-container {
-        grid-template-columns: 80px 1fr;
-    }
-
-    .sidebar {
-        padding: 24px 12px;
-    }
-
-    .logo-text-group,
-    .sidebar-section-title,
-    .nav-item span,
-    .sidebar-footer-card,
-    .user-info-text {
-        display: none;
-    }
-
-    .nav-item {
-        justify-content: center;
-        padding: 12px 0;
-    }
-
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .b2b-banner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-/* Smartphones (<= 600px) */
-@media (max-width: 600px) {
-    .content-wrapper {
-        padding: 20px 16px;
-        margin: 10px 0;
-        border-radius: 16px 16px 0 0;
-    }
-
-    .page-title-row {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .metrics-cards-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .features-grid,
-    .metrics-grid,
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-title {
-        font-size: 36px;
-    }
-
-    .hero-cta-group {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-    }
-
-    .dashboard-topbar {
-        padding: 16px;
-    }
-
-    .account-selector .acc-text {
-        display: none;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-}
-
-
-/* =========================================================
-   ===================  ADIÇÕES NOVAS  =====================
-   Tudo abaixo foi adicionado: correções do login e
-   responsividade. Mantenha este bloco no FINAL do arquivo.
-   ========================================================= */
-
-
-/* ---------------------------------------------------------
-   1. CORREÇÕES GERAIS (evitam estouro de largura)
-   --------------------------------------------------------- */
-
-img { max-width: 100%; }
-
-/* Sem isso, tabelas largas esticam a coluna 1fr do grid e
-   a página ganha rolagem lateral no dashboard */
-.main-content,
-.app-screen,
-.content-wrapper { min-width: 0; }
-
-.positions-table-box { overflow-x: auto; }
-.positions-table { min-width: 560px; }
-
-
-/* ---------------------------------------------------------
-   2. TELA DE LOGIN
-   --------------------------------------------------------- */
-
-.login-right-pane { gap: 24px; }
-
-/* Formulário com largura confortável (não estica em telas grandes) */
-.login-form-wrapper {
-    width: 100%;
-    max-width: 560px;
-    margin: 0 auto;
-}
-
-/* Olhinho: ícone fica levemente apagado quando a senha está visível */
-.eye-btn.is-visible .icon-eye { opacity: 0.55; }
-
-/* Mensagem de erro do login */
-.login-erro {
-    margin: -4px 0 16px;
-    color: #C0245F;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.login-form-footer { flex-wrap: wrap; gap: 8px; }
-
-
-/* ---------------------------------------------------------
-   3. RESPONSIVIDADE (NOVOS AJUSTES)
-   --------------------------------------------------------- */
-
-/* Títulos que acompanham o tamanho da tela */
-.hero-title    { font-size: clamp(32px, 5vw, 52px); }
-.section-title { font-size: clamp(26px, 4vw, 38px); }
-.login-title   { font-size: clamp(28px, 3.2vw, 42px); }
-
-/* ---------- Telas médias (<= 1100px) ---------- */
-@media (max-width: 1100px) {
-    .login-right-pane { padding: 40px 48px; }
-    .content-wrapper  { padding: 32px; }
-}
-
-/* ---------- Tablets (<= 980px) ---------- */
-@media (max-width: 980px) {
-
-    /* Landing: o menu desce para uma linha própria, com rolagem lateral */
-    .header { padding: 16px 0; }
-    .header-container {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-    .nav-links {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 22px;
-        overflow-x: auto;
-        white-space: nowrap;
-        padding-bottom: 4px;
-    }
-
-    .hero-section     { padding: 56px 0 72px; }
-    .features-section { padding: 72px 0; }
-    .b2b-section      { padding: 72px 0; }
-    .b2b-banner       { padding: 40px 32px; }
-
-    /* Login */
-    .login-right-pane { padding: 32px 28px; min-height: 100vh; }
-    .login-form-wrapper { max-width: 480px; }
-
-    /* Dashboard: sidebar compacta (só ícones) */
-    .sidebar-toggle-btn { display: none; }
-    .sidebar-logo {
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
-    }
-    .user-profile-box {
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-    }
-    .settings-dots { display: none; }
-
-    .dashboard-topbar { padding: 14px 20px; gap: 12px; }
-    .breadcrumb {
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .content-wrapper {
-        margin: 12px;
-        padding: 28px 24px;
-        border-top-left-radius: 20px;
-    }
-
-    .page-title-row { flex-wrap: wrap; gap: 16px; }
-    .filter-export-group { flex-wrap: wrap; }
-    .chart-header-row { flex-wrap: wrap; gap: 10px; }
-}
-
-/* ---------- Tablets pequenos / celulares grandes (<= 768px) ---------- */
-@media (max-width: 768px) {
-    .container,
-    .header-container,
-    .hero-container { padding: 0 20px; }
-
-    .features-grid { grid-template-columns: 1fr; }
-    .feature-card  { padding: 32px 24px; }
-
-    .metrics-section { padding: 48px 0; }
-    .b2b-text h2 { font-size: 26px; }
-
-    .footer { padding: 56px 0 32px; }
-    .footer-grid { gap: 32px; margin-bottom: 40px; }
-}
-
-/* ---------- Celulares (<= 600px) ---------- */
-@media (max-width: 600px) {
-
-    /* Landing */
-    .btn-cta       { padding: 8px 14px; font-size: 13px; }
-    .btn-primary   { padding: 14px 22px; }
-    .hero-subtitle { font-size: 16px; margin-bottom: 28px; }
-    .hero-card-wrapper { padding: 8px; border-radius: 18px; }
-    .dashboard-card    { padding: 16px; }
-    .patrimonio-value  { font-size: 22px; }
-
-    .b2b-banner { padding: 32px 20px; border-radius: 18px; }
-    .b2b-banner .btn-dark { width: 100%; justify-content: center; }
-
-    /* Login */
-    .login-right-pane { padding: 24px 20px; gap: 20px; }
-    .form-intro h2    { font-size: 26px; }
-    .form-options {
-        flex-wrap: wrap;
-        gap: 10px 16px;
-    }
-    .login-form-footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    /* Dashboard */
-    .app-container { grid-template-columns: 64px 1fr; }
-    .sidebar { padding: 16px 8px; }
-    .sidebar-logo { margin-bottom: 20px; }
-
-    .dashboard-topbar { padding: 12px 14px; }
-    .topbar-actions   { gap: 10px; }
-
-    .content-wrapper {
-        margin: 8px 0 0;
-        padding: 20px 14px;
-        border-radius: 16px 16px 0 0;
-    }
-
-    .page-title-row h1 { font-size: 24px; }
-    .filter-export-group { width: 100%; }
-    .filter-export-group .date-filter,
-    .filter-export-group .btn-pink-solid {
-        flex: 1;
-        justify-content: center;
-    }
-
-    .metrics-cards-grid { gap: 14px; margin-bottom: 20px; }
-    .metric-card-dark,
-    .metric-card-light  { padding: 20px; }
-    .metric-value-white,
-    .metric-value-dark  { font-size: 22px; }
-
-    .chart-box-main,
-    .allocation-box { padding: 18px 16px; }
-    .charts-row.v2 .chart-box-main,
-    .charts-row.v2 .allocation-box { padding: 18px 16px; }
-
-    .charts-row.v2 .bar-chart-visual { height: 200px; gap: 6px; }
-    .charts-row.v2 .bar { width: 22px; }
-
-    .charts-row.v2 .donut-container {
-        justify-content: center;
-        gap: 18px;
-    }
-
-    .positions-table-box.v2 .table-header-row { padding: 18px 16px 14px; }
-    .positions-table-box.v2 .positions-table th,
-    .positions-table-box.v2 .positions-table td { padding: 12px 16px; }
-}
-
-/* ---------- Celulares pequenos (<= 400px) ---------- */
-@media (max-width: 400px) {
-    .logo-text      { font-size: 13px; }
-    .btn-entrar     { display: none; }
-    .footer-grid    { grid-template-columns: 1fr; }
-    .login-card-sub { font-size: 11px; }
-    .form-intro h2  { font-size: 24px; }
-}
-
-/* ---------- Telas muito grandes (>= 1600px) ---------- */
-@media (min-width: 1600px) {
-    .content-wrapper { padding: 48px; }
 }
