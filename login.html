@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Acesso Seguro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bonitinho.css">
+</head>
+
+<body class="login-page-body">
+
+    <div class="login-split-container">
+
+        <div class="login-left-pane">
+            <div class="login-left-content">
+                <h1 class="login-title">Acompanhe seu patrimônio e tome decisões seguras, no seu ritmo.</h1>
+
+                <div class="login-card-preview">
+                    <div class="login-card-top">
+                        <span class="badge-growth-soft">+22,6%</span>
+                        <span class="login-card-sub">evolução média de metas em 24 meses</span>
+                    </div>
+                    <div class="login-card-quote">
+                        <p>"Finalmente conseguimos enxergar nossos planos no mesmo lugar — e investir sem ansiedade."</p>
+                        <small class="client-name">ANA E RICARDO - CLIENTES DESDE 2022</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-right-pane">
+            <div class="login-form-header">
+                <span class="access-type">ACESSO SEGURO</span>
+                <a href="#ajuda" class="help-link">
+                    <img src="Icones/duvida.png" alt="Dúvida" class="icon-help">
+                    Precisa de ajuda?
+                </a>
+            </div>
+
+            <div class="login-form-wrapper">
+                <div class="form-intro">
+                    <h2>Boas-vindas de volta.</h2>
+                    <p>Acesse sua conta para acompanhar seus investimentos.</p>
+                </div>
+
+                <form id="formLogin" class="auth-form" novalidate>
+                    <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <div class="input-field-wrapper">
+                            <input type="email" id="email" placeholder="marina@exemplo.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <div class="input-field-wrapper password-wrapper">
+                            <input type="password" id="senha" placeholder="••••••••••••" required>
+                            <button type="button" id="togglePassword" class="eye-btn" aria-label="Mostrar senha">
+                                <img src="Icones/eye.png" alt="Mostrar senha" class="icon-eye">
+                            </button>
+                        </div>
+                    </div>
+
+                    <p id="loginErro" class="login-erro" role="alert" hidden></p>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked>
+                            <span>Permanecer conectado</span>
+                        </label>
+                        <a href="#esqueci" class="forgot-link">Esqueci minha senha</a>
+                    </div>
+
+                    <button type="submit" id="btnEntrar" class="btn-dark-submit">Entrar na minha conta <span class="arrow">→</span></button>
+                </form>
+
+                <div class="register-redirect">
+                    <p>Ainda não investe com a NEXUS? <a href="index.html" class="pink-link">Crie sua conta</a></p>
+                </div>
+
+                <div class="security-alert-box">
+                    <div class="alert-icon">
+                        <img src="Icones/shield-check.png" alt="Segurança" class="icon-shield">
+                    </div>
+                    <p>A NEXUS nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
+                </div>
+            </div> 
+
+            <div class="login-form-footer">
+                <p>© 2026 NEXUS</p>
+                <div class="legal-links">
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos de uso</a>
+                </div>
+            </div>
+        </div> 
+
+    </div>
+
+    <script src="funcionalidades.js"></script>
+</body>
+
+</html>

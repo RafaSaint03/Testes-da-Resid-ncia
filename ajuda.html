@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Capital - Central de ajuda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bonitinho.css">
+    <link rel="stylesheet" href="auth-extras.css">
+    <link rel="stylesheet" href="ajuda.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo-area" style="text-decoration:none;color:#FFFFFF">
+                <div class="logo-badge">N</div>
+                <span class="logo-text">NOVA CAPITAL</span>
+            </a>
+            <div class="header-actions">
+                <a href="login.html" class="btn-entrar" id="btnVoltar">Voltar</a>
+                <a href="login.html" class="btn-cta">Entrar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Busca -->
+    <section class="help-hero">
+        <div class="container">
+            <div class="help-tag">CENTRAL DE AJUDA</div>
+            <h1>Como podemos ajudar?</h1>
+            <p>Busque pela sua dúvida ou escolha um tema abaixo. Se não encontrar, fale com a gente.</p>
+
+            <form id="formBusca" class="help-search" role="search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+                <input type="search" id="buscaAjuda" placeholder="Ex.: esqueci minha senha" aria-label="Buscar na central de ajuda" autocomplete="off">
+            </form>
+        </div>
+    </section>
+
+    <section class="help-section">
+        <div class="container help-layout">
+
+            <!-- Perguntas frequentes -->
+            <div id="duvidas">
+                <h2 class="help-block-title">Perguntas frequentes</h2>
+                <p class="help-block-sub">Respostas rápidas para as dúvidas mais comuns. <span id="faqContador"></span></p>
+
+                <div class="help-chips" role="group" aria-label="Filtrar por tema">
+                    <button type="button" class="help-chip active" data-cat="todos" aria-pressed="true">Todos</button>
+                    <button type="button" class="help-chip" data-cat="acesso" aria-pressed="false">Acesso e senha</button>
+                    <button type="button" class="help-chip" data-cat="cadastro" aria-pressed="false">Criar conta</button>
+                    <button type="button" class="help-chip" data-cat="seguranca" aria-pressed="false">Segurança</button>
+                    <button type="button" class="help-chip" data-cat="investimentos" aria-pressed="false">Investimentos</button>
+                </div>
+
+                <div class="faq-list">
+                    <details class="faq-item" data-cat="acesso" id="faq-esqueci-senha">
+                        <summary>Esqueci minha senha. O que eu faço?</summary>
+                        <div class="faq-answer">
+                            Na tela de login, clique em <a href="esqueci-senha.html">Esqueci minha senha</a>, informe o e-mail da sua conta e enviaremos um link para você criar uma nova senha. O link expira em 30 minutos.
+                        </div>
+                    </details>
+
+                    <details class="faq-item" data-cat="acesso" id="faq-email-nao-chegou">
+                        <summary>Não recebi o e-mail de recuperação</summary>
+                        <div class="faq-answer">
+                            Confira a caixa de spam e verifique se o e-mail foi digitado corretamente. Aguarde alguns minutos e, se ainda não chegar, volte à tela de recuperação e use a opção de reenviar, disponível após 30 segundos. Persistindo o problema, fale com nosso suporte.
+                        </div>
+                    </details>
+
+                    <details class="faq-item" data-cat="acesso" id="faq-conta-bloqueada">
+                        <summary>Minha conta foi bloqueada. E agora?</summary>
+                        <div class="faq-answer">
+                            Por segurança, o acesso pode ser bloqueado temporariamente após várias tentativas de login incorretas. Você pode <a href="esqueci-senha.html">criar uma nova senha</a> ou entrar em contato com o suporte pelos canais ao lado.
+                        </div>
+                    </details>
+
+                    <details class="faq-item" data-cat="cadastro" id="faq-criar-conta">
+                        <summary>Como crio minha conta?</summary>
+                        <div class="faq-answer">
+                            Acesse <a href="cadastro.html">Criar conta</a> e preencha nome completo, e-mail, CPF, celular e uma senha. A senha precisa ter 8 ou mais caracteres, misturando letras, números e símbolos. Depois, é só aceitar os termos de uso.
+                        </div>
+                    </details>
+
+                    <details class="faq-item" data-cat="cadastro" id="faq-cpf">
+                        <summary>Por que preciso informar meu CPF?</summary>
+                        <div class="faq-answer">
+                            O CPF serve para confirmar a sua identidade e atender às exigências regulatórias do mercado financeiro. Ele é protegido por criptografia e usado apenas para esse fim.
+                        </div>
+                    </details>
+
+                    <details class="faq-item" data-cat="seguranca" id="faq-senha-por-telefone">
+                        <summary>A NOVA CAPITAL pede minha senha por telefone ou mensagem?</summary>
+                        <div class="faq-answer">
+                            Nunca. Não solicitamos senhas ou códigos por telefone, e-mail ou mensagens. Se alguém pedir esses dados em nosso nome, não responda e avise o nosso suporte.
+                        </div>
+                    </details>
+
+                    <details class="faq-item" data-cat="seguranca" id="faq-site-oficial">
+                        <summary>Como sei que estou em um site oficial?</summary>
+                        <div class="faq-answer">
+                            Digite o endereço você mesmo no navegador em vez de clicar em links recebidos, confira se a conexão é segura (cadeado ao lado do endereço) e desconfie de ofertas urgentes ou pedidos de dados fora da plataforma.
+                        </div>
+                    </details>
+
+                    <details class="faq-item" data-cat="investimentos" id="faq-ver-patrimonio">
+                        <summary>Onde acompanho meu patrimônio e meus investimentos?</summary>
+                        <div class="faq-answer">
+                            Depois de entrar na sua conta, a tela de <strong>Visão geral</strong> reúne o patrimônio total, a evolução da carteira, a alocação por classe de ativos e as principais posições.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-empty" id="faqVazio" hidden>
+                    Não encontramos nada para essa busca. Tente outras palavras ou <a href="#contato">fale com a gente</a>.
+                </div>
+
+                <div class="security-alert-box">
+                    <p><strong>Dica de segurança:</strong> a NOVA CAPITAL nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
+                </div>
+            </div>
+
+            <!-- Contato -->
+            <aside id="contato" class="help-side">
+                <div class="contact-card">
+                    <h3>Fale com a gente</h3>
+                    <p>Não achou o que procurava? Nosso time está pronto para ajudar.</p>
+
+                    <div class="contact-row">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                        </div>
+                        <div>
+                            <strong>E-mail</strong>
+                            <a href="mailto:suporte@novacapital.com.br">suporte@novacapital.com.br</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+                        </div>
+                        <div>
+                            <strong>Telefone</strong>
+                            <a href="tel:08000000000">0800 000 0000</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                        </div>
+                        <div>
+                            <strong>Horário de atendimento</strong>
+                            <span>Segunda a sexta, das 8h às 18h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <div id="contatoFormWrap">
+                        <h3>Envie uma mensagem</h3>
+                        <p>Responderemos no e-mail que você informar.</p>
+
+                        <form id="formContato" class="auth-form" novalidate>
+                            <div class="input-group compact">
+                                <label for="contatoNome">Nome</label>
+                                <div class="input-field-wrapper">
+                                    <input type="text" id="contatoNome" placeholder="Marina Costa" autocomplete="name">
+                                </div>
+                                <span class="field-error" id="erro-contatoNome"></span>
+                            </div>
+
+                            <div class="input-group compact">
+                                <label for="contatoEmail">E-mail</label>
+                                <div class="input-field-wrapper">
+                                    <input type="email" id="contatoEmail" placeholder="marina@exemplo.com" autocomplete="email">
+                                </div>
+                                <span class="field-error" id="erro-contatoEmail"></span>
+                            </div>
+
+                            <div class="input-group compact">
+                                <label for="contatoAssunto">Assunto</label>
+                                <div class="input-field-wrapper">
+                                    <select id="contatoAssunto">
+                                        <option value="">Selecione...</option>
+                                        <option value="acesso">Acesso e senha</option>
+                                        <option value="cadastro">Criar conta</option>
+                                        <option value="seguranca">Segurança</option>
+                                        <option value="investimentos">Investimentos</option>
+                                        <option value="outro">Outro assunto</option>
+                                    </select>
+                                </div>
+                                <span class="field-error" id="erro-contatoAssunto"></span>
+                            </div>
+
+                            <div class="input-group compact">
+                                <label for="contatoMensagem">Mensagem</label>
+                                <div class="input-field-wrapper area">
+                                    <textarea id="contatoMensagem" placeholder="Conte como podemos ajudar"></textarea>
+                                </div>
+                                <span class="field-error" id="erro-contatoMensagem"></span>
+                            </div>
+
+                            <button type="submit" class="btn-dark-submit">Enviar mensagem <span class="arrow">→</span></button>
+                        </form>
+                    </div>
+
+                    <div id="contatoSucesso" class="success-state">
+                        <div class="success-icon">✓</div>
+                        <h2>Mensagem enviada!</h2>
+                        <p>Recebemos o seu contato e responderemos em <strong id="contatoEmailEnviado"></strong>.</p>
+                        <button type="button" id="btnNovaMensagem" class="btn-link-light">Enviar outra mensagem</button>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </section>
+
+    <footer class="footer" style="padding:40px 0">
+        <div class="container footer-bottom" style="border-top:none;padding-top:0">
+            <p>© 2026 Nova Capital. Todos os direitos reservados.</p>
+            <p>Instituição parceira autorizada pelo Banco Central do Brasil.</p>
+        </div>
+    </footer>
+
+    <script src="ajuda.js"></script>
+</body>
+
+</html>

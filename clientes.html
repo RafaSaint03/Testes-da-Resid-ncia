@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Central de Clientes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bonitinho.css">
+</head>
+
+<body class="dashboard-body">
+
+    <div class="app-container" id="appContainer">
+    
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-logo">
+                    <div class="logo-inner">
+                        <div class="logo-badge">N</div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">NEXUS</span>
+                          
+                        </div>
+                    </div>
+                    <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Recolher menu" aria-expanded="true" title="Recolher/expandir menu">☰</button>
+                </div>
+
+              
+                <div class="workspace-selector-box">
+                    <span class="sidebar-section-title">CONTA ATIVA</span>
+                    <div class="account-selector-sidebar">
+                        <span class="acc-badge">AW</span>
+                        <div class="acc-text">
+                            <span class="acc-name">Aurora Wealth</span>
+                            <span class="acc-type">Conta empresarial ⌄</span>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="sidebar-section-title">NAVEGAÇÃO</span>
+                <nav class="sidebar-nav">
+                    <a href="geral.html" class="nav-item" title="Visão geral">
+                        <img src="Icones/target.png" alt="" class="nav-icon"> <span>Visão geral</span>
+                    </a>
+                    <a href="clientes.html" class="nav-item active" title="Clientes">
+                        <img src="Icones/wallet.png" alt="" class="nav-icon"> <span>Clientes</span>
+                    </a>
+                    <a href="carteiras.html" class="nav-item" title="Carteiras">
+                        <img src="Icones/badge-dollar-sign.png" alt="" class="nav-icon"> <span>Carteiras</span>
+                    </a>
+                    <a href="movimentacoes.html" class="nav-item" title="Movimentações">
+                        <img src="Icones/Vector.png" alt="" class="nav-icon"> <span>Movimentações</span>
+                    </a>
+                    <a href="investimentos.html" class="nav-item" title="Investimentos">
+                        <img src="Icones/target.png" alt="" class="nav-icon"> <span>Investimentos</span>
+                    </a>
+                    <a href="relatorios.html" class="nav-item" title="Relatórios">
+                        <img src="Icones/Vector.png" alt="" class="nav-icon"> <span>Relatórios</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div>
+                <div class="sidebar-footer-card">
+                    <div class="plan-info">
+                        <span class="plan-name">Plano Pro</span>
+                        <span class="badge-ativo">ATIVO</span>
+                    </div>
+                    <p class="plan-desc">8 de 12 carteiras acompanhadas</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 66%;"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <!-- Topbar: Usuária Logada, Notificações e Ajuda -->
+            <header class="dashboard-topbar">
+                <div class="breadcrumb">
+                    Investimentos / <span class="current-crumb" id="breadcrumb-title">Central de clientes</span>
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-btn" title="Ajuda">
+                        <img src="Icones/duvida.png" alt="Ajuda" class="icon-help">
+                    </button>
+                    <button class="icon-btn" title="Notificações">
+                        <img src="Icones/bell.png" alt="Notificação" class="bell-icon">
+                    </button>
+
+                    <!-- Perfil da Operadora / Assessora -->
+                    <div class="user-profile-topbar">
+                        <div class="user-avatar-circle">MC</div>
+                        <div class="user-info-text">
+                            <span class="user-name">Marina Costa</span>
+                            <span class="user-role">Assessora sênior</span>
+                        </div>
+                        <span class="settings-dots" id="btnLogout" title="Sair" style="cursor:pointer">
+                            <img src="Icones/trespontinhos.png" alt="Sair" class="icon-dots">
+                        </span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- TELA: LISTAGEM DE CLIENTES -->
+            <section id="screen-clientes" class="app-screen active">
+                <div class="content-wrapper">
+                    <div class="page-title-row">
+                        <div>
+                            <h1>Central de clientes</h1>
+                            <p class="section-desc">Gerencie relacionamentos, perfis e patrimônio em um só lugar.</p>
+                        </div>
+                        <button class="btn-pink-solid" data-screen="screen-novo">
+                            + Novo cliente
+                        </button>
+                    </div>
+
+                    <div class="metrics-cards-grid">
+                        <div class="metric-card-dark">
+                            <div class="card-header">
+                                <span class="card-label-light">Clientes na base</span>
+                                <div class="card-icon-bg pink">👤</div>
+                            </div>
+                            <div class="metric-value-white">852</div>
+                            <div class="metric-footer-badge"><span class="badge-green">+12 este mês</span></div>
+                        </div>
+                        <div class="metric-card-light">
+                            <div class="card-header">
+                                <span class="card-label-dark">Patrimônio sob gestão</span>
+                                <div class="card-icon-bg cream">🏛️</div>
+                            </div>
+                            <div class="metric-value-dark">R$ 8,4 mi</div>
+                            <div class="metric-footer-badge"><span class="badge-green-soft">+6,8%</span></div>
+                        </div>
+                        <div class="metric-card-light">
+                            <div class="card-header">
+                                <span class="card-label-dark">Cadastros em análise</span>
+                                <div class="card-icon-bg cream">👤</div>
+                            </div>
+                            <div class="metric-value-dark">08</div>
+                            <span class="sub-text-dark">3 pendentes</span>
+                        </div>
+                    </div>
+
+                    <div class="positions-table-box">
+                        <div class="table-header-row">
+                            <h3>Filtros e Listagem</h3>
+                        </div>
+                        <table class="positions-table">
+                            <thead>
+                                <tr>
+                                    <th>CLIENTE</th>
+                                    <th>STATUS</th>
+                                    <th>PATRIMÔNIO</th>
+                                    <th>PERFIL</th>
+                                    <th>ÚLTIMA MOVIMENTAÇÃO</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer;" data-screen="screen-detalhes">
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <div class="user-avatar-circle"
+                                                style="width: 28px; height: 28px; font-size: 11px;">AM</div>
+                                            <div>
+                                                <strong>Ana Luiza Martins</strong><br>
+                                                <small style="color:#6D6274;">ana.martins@alvorada.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge-table-green">Ativo</span></td>
+                                    <td>R$ 1.240.000</td>
+                                    <td>
+                                        <span style="background:#E7D7C2; padding:2px 8px; border-radius:4px; font-size:11px;">Arrojado</span>
+                                    </td>
+                                    <td>Hoje, 10:32</td>
+                                    <td>
+                                        <span class="dots-menu" title="Opções">
+                                            <img src="Icones/trespontinhos.png" alt="Opções" class="icon-dots">
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TELA: DETALHES DO CLIENTE -->
+            <section id="screen-detalhes" class="app-screen">
+                <div class="content-wrapper">
+                    <div class="page-title-row">
+                        <div>
+                            <h1>Ana Luiza Martins</h1>
+                            <p class="section-desc">Informações do cliente, patrimônio e histórico de relacionamento.</p>
+                        </div>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="date-filter" data-screen="screen-clientes">← Voltar para clientes</button>
+                            <button class="btn-pink-solid">Gerar relatório</button>
+                        </div>
+                    </div>
+
+                    <div class="metrics-cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="metric-card-dark">
+                            <span class="card-label-light">Patrimônio do cliente</span>
+                            <div class="metric-value-white" style="font-size: 24px; margin: 8px 0;">R$ 1.240.000</div>
+                            <span class="sub-text-muted">Posição em 30/09/2026</span>
+                        </div>
+                        <div class="metric-card-light">
+                            <span class="card-label-dark">Rentabilidade acumulada</span>
+                            <div class="metric-value-dark" style="font-size: 24px; margin: 8px 0; color:#0D8249;">+8,76%</div>
+                            <span class="sub-text-dark">Carteira principal - desde o início</span>
+                        </div>
+                        <div class="metric-card-light">
+                            <span class="card-label-dark">Relacionamento</span>
+                            <div class="metric-value-dark" style="font-size: 24px; margin: 8px 0;">2 anos</div>
+                            <span class="sub-text-dark">Cliente desde setembro de 2024</span>
+                        </div>
+                    </div>
+
+                    <div class="charts-row" style="grid-template-columns: 1fr 1.5fr;">
+                        <div class="chart-box-main" style="display: flex; flex-direction: column; gap: 20px;">
+                            <h3>Dados do cliente</h3>
+                            <div style="font-size: 13px; color:#554A5E; display: flex; flex-direction: column; gap: 10px;">
+                                <div><strong>E-mail:</strong> ana.martins@alvorada.com</div>
+                                <div><strong>Celular:</strong> (11) 99842-1730</div>
+                                <div><strong>CPF:</strong> ***.482.***-09</div>
+                                <div><strong>Cidade:</strong> São Paulo
+
+                        
+    </main>
+    </div> <!-- fecha .app-container -->
+
+    <script src="funcionalidades.js"></script>
+</body>
+</html>

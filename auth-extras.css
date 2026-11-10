@@ -1,0 +1,295 @@
+/* =========================================================
+   TELAS DE AUTENTICAÇÃO: Criar conta e Esqueci minha senha
+   Complementa o bonitinho.css (carregue DEPOIS dele).
+   ========================================================= */
+
+.login-form-wrapper {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 24px 0;
+}
+
+/* ---------- Lado esquerdo: lista de benefícios ---------- */
+.benefit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.benefit-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(255, 101, 195, 0.15);
+    color: var(--primary-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.benefit-item strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+    color: #FFFFFF;
+}
+
+.benefit-item span {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #D8C8FF;
+}
+
+/* ---------- Formulário ---------- */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.auth-form .input-group.compact {
+    margin-bottom: 16px;
+}
+
+.input-field-wrapper:focus-within {
+    box-shadow: 0 0 0 3px rgba(255, 101, 195, 0.2);
+}
+
+.input-field-wrapper.invalid {
+    border-color: #D64545;
+    box-shadow: 0 0 0 3px rgba(214, 69, 69, 0.12);
+}
+
+.input-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #887B94;
+}
+
+.field-error {
+    display: none;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #D64545;
+}
+
+.field-error.visible {
+    display: block;
+}
+
+.password-wrapper input {
+    flex: 1;
+}
+
+/* ---------- Força da senha ---------- */
+.password-strength {
+    margin-top: 10px;
+}
+
+.strength-bars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.strength-bars span {
+    height: 4px;
+    border-radius: 99px;
+    background: #E7D7C2;
+    transition: background 0.2s;
+}
+
+.strength-bars.level-1 span:nth-child(-n+1) { background: #D64545; }
+.strength-bars.level-2 span:nth-child(-n+2) { background: #E8A13A; }
+.strength-bars.level-3 span:nth-child(-n+3) { background: #7FC46B; }
+.strength-bars.level-4 span:nth-child(-n+4) { background: #0D8249; }
+
+.strength-label {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #6D6274;
+}
+
+/* ---------- Termos ---------- */
+.terms-group {
+    margin-bottom: 22px;
+}
+
+.terms-group .checkbox-label {
+    align-items: flex-start;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.terms-group .checkbox-label input {
+    margin-top: 3px;
+    accent-color: #C73B8F;
+}
+
+.terms-group a {
+    color: #C73B8F;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-dark-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ---------- Voltar ---------- */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #C73B8F;
+    text-decoration: none;
+    margin-bottom: 22px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Passo a passo (recuperação) ---------- */
+.step-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    counter-reset: passo;
+}
+
+.step-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    counter-increment: passo;
+}
+
+.step-item::before {
+    content: counter(passo);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--primary-pink);
+    color: var(--bg-main);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.step-item strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 2px;
+    color: #FFFFFF;
+}
+
+.step-item span {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #D8C8FF;
+}
+
+/* ---------- Estado de sucesso ---------- */
+.success-state {
+    display: none;
+    text-align: center;
+    padding: 12px 0;
+}
+
+.success-state.visible {
+    display: block;
+}
+
+.success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(110, 235, 174, 0.25);
+    color: #0D8249;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.success-state h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.success-state p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6D6274;
+    margin-bottom: 24px;
+}
+
+.success-state p strong {
+    color: var(--bg-main);
+}
+
+.btn-link-light {
+    background: none;
+    border: none;
+    color: #C73B8F;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.btn-link-light:disabled {
+    color: #887B94;
+    cursor: not-allowed;
+}
+
+a.btn-dark-submit {
+    text-decoration: none;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+    .login-split-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-left-pane {
+        display: none;
+    }
+
+    .login-right-pane {
+        padding: 32px 24px;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

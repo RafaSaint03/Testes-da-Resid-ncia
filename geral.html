@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Visão Geral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bonitinho.css">
+</head>
+
+<body class="dashboard-body">
+
+    <div class="app-container" id="appContainer">
+        <!-- Sidebar: Workspace e Navegação -->
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-logo">
+                    <div class="logo-inner">
+                        <div class="logo-badge">N</div>
+                        <div class="logo-text-group">
+                            <span class="logo-title">NEXUS</span>
+                        </div>
+                    </div>
+                    <button class="sidebar-toggle-btn" id="sidebarToggle" onclick="toggleSidebar()"
+                        aria-label="Recolher menu" aria-expanded="true" title="Recolher/expandir menu">☰</button>
+                </div>
+
+                <!-- Empresa / Conta Gerenciada Ativa -->
+                <div class="workspace-selector-box">
+                    <span class="sidebar-section-title">CONTA ATIVA</span>
+                    <div class="account-selector-sidebar">
+                        <span class="acc-badge">AW</span>
+                        <div class="acc-text">
+                            <span class="acc-name">Aurora Wealth</span>
+                            <span class="acc-type">Conta empresarial ⌄</span>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="sidebar-section-title">NAVEGAÇÃO</span>
+                <nav class="sidebar-nav">
+                    <a href="geral.html" class="nav-item active" title="Visão geral">
+                        <img src="Icones/target.png" alt="" class="nav-icon"> <span>Visão geral</span>
+                    </a>
+                    <a href="clientes.html" class="nav-item" title="Clientes">
+                        <img src="Icones/wallet.png" alt="" class="nav-icon"> <span>Clientes</span>
+                    </a>
+                    <a href="carteiras.html" class="nav-item" title="Carteiras">
+                        <img src="Icones/badge-dollar-sign.png" alt="" class="nav-icon"> <span>Carteiras</span>
+                    </a>
+                    <a href="movimentacoes.html" class="nav-item" title="Movimentações">
+                        <img src="Icones/Vector.png" alt="" class="nav-icon"> <span>Movimentações</span>
+                    </a>
+                    <a href="investimentos.html" class="nav-item" title="Investimentos">
+                        <img src="Icones/target.png" alt="" class="nav-icon"> <span>Investimentos</span>
+                    </a>
+                    <a href="relatorios.html" class="nav-item" title="Relatórios">
+                        <img src="Icones/Vector.png" alt="" class="nav-icon"> <span>Relatórios</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div>
+                <div class="sidebar-footer-card">
+                    <div class="plan-info">
+                        <span class="plan-name">Plano Pro</span>
+                        <span class="badge-ativo">ATIVO</span>
+                    </div>
+                    <p class="plan-desc">8 de 12 carteiras acompanhadas</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 66%;"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <!-- Topbar: Usuária Logada e Notificações -->
+            <header class="dashboard-topbar">
+                <div class="breadcrumb">
+                    <span>Investimentos</span> / <span class="current-crumb">Visão geral</span>
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-btn" title="Ajuda">
+                        <img src="Icones/duvida.png" alt="Ajuda" class="icon-help">
+                    </button>
+                    <button class="icon-btn" title="Notificações">
+                        <img src="Icones/bell.svg" alt="Notificação" class="bell-icon">
+                    </button>
+                    
+                    <!-- Perfil da Operadora / Assessora -->
+                    <div class="user-profile-topbar">
+                        <div class="user-avatar-circle">MC</div>
+                        <div class="user-info-text">
+                            <span class="user-name">Marina Costa</span>
+                            <span class="user-role">Assessora sênior</span>
+                        </div>
+<span class="settings-dots" title="Sair" style="cursor:pointer" onclick="window.location.href='index.html'">
+        <img src="Icones/trespontinhos.png" alt="Sair" class="icon-dots">
+    </span>
+</div>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="page-title-row">
+                    <div>
+                        <h1>Visão geral</h1>
+                        <p class="section-desc">Acompanhe a saúde e a rentabilidade consolidada dos investimentos.</p>
+                    </div>
+                    <div class="filter-export-group">
+                        <div class="date-filter">
+                            <span>📅 01–30 set 2026</span>
+                        </div>
+                        <button id="btnExportar" class="btn-pink-solid">
+                            <span>⬇</span> Exportar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grid de Métricas Superiores -->
+                <div class="metrics-cards-grid">
+                    <div class="metric-card-dark">
+                        <div class="metric-card-header">
+                            <span class="card-label-light">Total investido</span>
+                            <span class="card-icon-bg pink"><img src="Icones/wallet.png" alt=""></span>
+                        </div>
+                        <h2 class="metric-value-white">R$ 4,28 mi</h2>
+                        <div class="metric-footer-badge">
+                            <span class="badge-green">↗ 8,4%</span> <span class="sub-text-muted">vs. mês anterior</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card-light">
+                        <div class="metric-card-header">
+                            <span class="card-label-dark">Custos operacionais</span>
+                            <span class="card-icon-bg cream"><img src="Icones/Vector.png" alt=""></span>
+                        </div>
+                        <h2 class="metric-value-dark">R$ 124,6 mil</h2>
+                        <div class="metric-footer-badge">
+                            <span class="badge-green">↗ 2,1%</span> <span class="sub-text-dark">economia no período</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card-light">
+                        <div class="metric-card-header">
+                            <span class="card-label-dark">Lucro geral</span>
+                            <span class="card-icon-bg cream"><img src="Icones/badge-dollar-sign.png" alt=""></span>
+                        </div>
+                        <h2 class="metric-value-dark">R$ 618,9 mil</h2>
+                        <div class="metric-footer-badge">
+                            <span class="badge-green">↗ 12,6%</span> <span class="sub-text-dark">resultado líquido</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card-light">
+                        <div class="metric-card-header">
+                            <span class="card-label-dark">ROI</span>
+                            <span class="card-icon-bg cream"><img src="Icones/target.png" alt=""></span>
+                        </div>
+                        <h2 class="metric-value-dark">14,46%</h2>
+                        <div class="metric-footer-badge">
+                            <span class="badge-green">↗ 1,8 p.p.</span> <span class="sub-text-dark">acima da meta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos -->
+                <div class="charts-row v2">
+                    <div class="chart-box-main">
+                        <div class="chart-header-row">
+                            <div>
+                                <h3>Lucro acumulado</h3>
+                                <span class="sub-text-dark"><span class="legend-dot"></span>Resultado líquido mensal</span>
+                            </div>
+                            <div class="date-filter small">
+                                <span>Últimos 7 meses</span>
+                                <span class="arrow-down">⌄</span>
+                            </div>
+                        </div>
+                        <div class="bar-chart-visual" role="img"
+                            aria-label="Lucro líquido mensal de março a setembro; setembro é o maior, R$ 96 mil">
+                            <div class="bar-col">
+                                <div class="bar" style="height: 35%;"><span>Mar</span></div>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar" style="height: 45%;"><span>Abr</span></div>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar" style="height: 38%;"><span>Mai</span></div>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar" style="height: 58%;"><span>Jun</span></div>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar" style="height: 52%;"><span>Jul</span></div>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar" style="height: 65%;"><span>Ago</span></div>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar highlight" style="height: 85%;"><span class="bar-tooltip">R$ 96k</span><span>Set</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="allocation-box">
+                        <div class="chart-header-row">
+                            <div>
+                                <h3>Alocação</h3>
+                                <span class="sub-text-dark">Distribuição por classe</span>
+                            </div>
+                            <span class="dots-menu" title="Mais opções">
+                                <img src="Icones/trespontinhos.png" alt="Mais opções" class="icon-dots">
+                            </span>
+                        </div>
+                        <div class="donut-container">
+                            <div class="donut-ring" role="img"
+                                aria-label="Renda fixa 48%, Fundos 26%, Ações 18%, Caixa 8%">
+                                <span class="donut-center-text"><b>100%</b><small>alocado</small></span>
+                            </div>
+                            <div class="donut-legend">
+                                <div class="legend-item"><span class="dot rf"></span> Renda fixa <span class="val">48%</span></div>
+                                <div class="legend-item"><span class="dot fu"></span> Fundos <span class="val">26%</span></div>
+                                <div class="legend-item"><span class="dot ac"></span> Ações <span class="val">18%</span></div>
+                                <div class="legend-item"><span class="dot cx"></span> Caixa <span class="val">8%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Posições -->
+                <div class="positions-table-box v2">
+                    <div class="table-header-row">
+                        <div>
+                            <h3>Principais posições</h3>
+                            <span class="sub-text-dark">Ativos com maior participação na carteira</span>
+                        </div>
+                        <a href="carteiras.html" class="pink-link-arrow">Ver carteira completa ↗</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="positions-table">
+                            <thead>
+                                <tr>
+                                    <th>ATIVO</th>
+                                    <th>CATEGORIA</th>
+                                    <th>VALOR APLICADO</th>
+                                    <th class="col-right">RENTABILIDADE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="asset-cell"><span class="asset-icon t-pink"><svg viewBox="0 0 24 24"
+                                                    width="18" height="18" fill="none" stroke="currentColor"
+                                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                                                    aria-hidden="true">
+                                                    <line x1="3" x2="21" y1="22" y2="22" />
+                                                    <line x1="6" x2="6" y1="18" y2="11" />
+                                                    <line x1="10" x2="10" y1="18" y2="11" />
+                                                    <line x1="14" x2="14" y1="18" y2="11" />
+                                                    <line x1="18" x2="18" y1="18" y2="11" />
+                                                    <polygon points="12 2 20 7 4 7" />
+                                                </svg></span>Tesouro IPCA+ 2035</div>
+                                    </td>
+                                    <td>Renda fixa</td>
+                                    <td>R$ 840.200</td>
+                                    <td class="col-right"><span class="rent-positive">↗ +8,42%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="asset-cell"><span class="asset-icon t-lilac"><svg
+                                                    viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                                    stroke-linejoin="round" aria-hidden="true">
+                                                    <path
+                                                        d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+                                                    <path
+                                                        d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+                                                    <path
+                                                        d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+                                                </svg></span>Fundo Aurora Macro</div>
+                                    </td>
+                                    <td>Fundos</td>
+                                    <td>R$ 524.900</td>
+                                    <td class="col-right"><span class="rent-positive">↗ +12,18%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="asset-cell"><span class="asset-icon t-peach"><svg
+                                                    viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                                    stroke-linejoin="round" aria-hidden="true">
+                                                    <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+                                                    <path d="M18 17V9" />
+                                                    <path d="M13 17V5" />
+                                                    <path d="M8 17v-3" />
+                                                </svg></span>PETR4</div>
+                                    </td>
+                                    <td>Ações</td>
+                                    <td>R$ 318.400</td>
+                                    <td class="col-right"><span class="rent-positive">↗ +4,76%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="asset-cell"><span class="asset-icon t-mint"><svg viewBox="0 0 24 24"
+                                                    width="18" height="18" fill="none" stroke="currentColor"
+                                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                                                    aria-hidden="true">
+                                                    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                                                    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                                                    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                                                    <path d="M10 6h4" />
+                                                    <path d="M10 10h4" />
+                                                    <path d="M10 14h4" />
+                                                    <path d="M10 18h4" />
+                                                </svg></span>CDB Banco Prisma</div>
+                                    </td>
+                                    <td>Renda fixa</td>
+                                    <td>R$ 286.000</td>
+                                    <td class="col-right"><span class="rent-positive">↗ +6,91%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="funcionalidades.js"></script>
+</body>
+
+</html>

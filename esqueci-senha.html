@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Capital - Recuperar senha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bonitinho.css">
+    <link rel="stylesheet" href="auth-extras.css">
+</head>
+
+<body class="login-page-body">
+
+    <div class="login-split-container">
+        <!-- Lado esquerdo: passo a passo -->
+        <div class="login-left-pane">
+            <div class="login-left-content">
+                <h1 class="login-title">Recupere o seu acesso com segurança e sem estresse.</h1>
+
+                <div class="login-card-preview">
+                    <ol class="step-list">
+                        <li class="step-item">
+                            <div>
+                                <strong>Informe seu e-mail</strong>
+                                <span>Use o mesmo e-mail cadastrado na sua conta.</span>
+                            </div>
+                        </li>
+                        <li class="step-item">
+                            <div>
+                                <strong>Receba o link de recuperação</strong>
+                                <span>Ele chega em poucos minutos e expira em 30 minutos.</span>
+                            </div>
+                        </li>
+                        <li class="step-item">
+                            <div>
+                                <strong>Crie uma nova senha</strong>
+                                <span>Pronto: é só entrar de novo e acompanhar seus investimentos.</span>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="login-left-footer">
+                <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Ambiente protegido</span>
+                <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Dados criptografados</span>
+                <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> Instituição verificada</span>
+            </div>
+        </div>
+
+        <!-- Lado direito -->
+        <div class="login-right-pane">
+            <div class="login-form-header">
+                <span class="access-type">RECUPERAÇÃO DE ACESSO</span>
+                <a href="ajuda.html" class="help-link">Precisa de ajuda?</a>
+            </div>
+
+            <div class="login-form-wrapper">
+
+                <!-- Formulário -->
+                <div id="esqueciConteudo">
+                    <a href="login.html" class="back-link">Voltar para o login</a>
+
+                    <div class="form-intro">
+                        <h2>Esqueceu sua senha?</h2>
+                        <p>Sem problema. Informe seu e-mail e enviaremos um link para você criar uma nova senha.</p>
+                    </div>
+
+                    <form id="formEsqueci" class="auth-form" novalidate>
+                        <div class="input-group">
+                            <label for="emailRecuperacao">E-mail</label>
+                            <div class="input-field-wrapper">
+                                <input type="email" id="emailRecuperacao" placeholder="marina@exemplo.com" autocomplete="email" required>
+                            </div>
+                            <span class="field-error" id="erro-emailRecuperacao"></span>
+                        </div>
+
+                        <button type="submit" class="btn-dark-submit">Enviar link de recuperação <span class="arrow">→</span></button>
+                    </form>
+
+                    <div class="register-redirect">
+                        <p>Ainda não investe com a NOVA? <a href="cadastro.html" class="pink-link">Crie sua conta</a></p>
+                    </div>
+
+                    <div class="security-alert-box">
+                        
+                        <p>A NOVA CAPITAL nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
+                    </div>
+                </div>
+
+                <!-- Estado de sucesso -->
+                <div id="esqueciSucesso" class="success-state">
+                    <div class="success-icon">✉</div>
+                    <h2>Confira seu e-mail.</h2>
+                    <p>Se existir uma conta com <strong id="emailEnviado"></strong>, você receberá em instantes um link para redefinir sua senha. Não esqueça de olhar a caixa de spam.</p>
+                    <a href="login.html" class="btn-dark-submit">Voltar para o login <span class="arrow">→</span></a>
+                    <button type="button" id="btnReenviar" class="btn-link-light">Reenviar e-mail</button>
+                </div>
+
+            </div>
+
+            <div class="login-form-footer">
+                <p>© 2026 NOVA CAPITAL</p>
+                <div class="legal-links">
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos de uso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="autenticacao.js"></script>
+</body>
+
+</html>

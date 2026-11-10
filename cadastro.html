@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Capital - Criar conta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bonitinho.css">
+    <link rel="stylesheet" href="auth-extras.css">
+</head>
+
+<body class="login-page-body">
+
+    <div class="login-split-container">
+        <!-- Lado esquerdo: benefícios -->
+        <div class="login-left-pane">
+            <div class="login-left-content">
+                <h1 class="login-title">Comece a investir com clareza, no seu ritmo.</h1>
+
+                <div class="login-card-preview">
+                    <ul class="benefit-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <div>
+                                <strong>Tudo em uma única visão</strong>
+                                <span>Investimentos, metas e evolução patrimonial sem planilhas.</span>
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <div>
+                                <strong>Estratégias que fazem sentido</strong>
+                                <span>Recomendações alinhadas ao seu momento e tolerância a risco.</span>
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon">✓</span>
+                            <div>
+                                <strong>Segurança de ponta a ponta</strong>
+                                <span>Criptografia e camadas avançadas de autenticação.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="login-left-footer">
+                <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Ambiente protegido</span>
+                <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Dados criptografados</span>
+                <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> Instituição verificada</span>
+            </div>
+        </div>
+
+        <!-- Lado direito: formulário -->
+        <div class="login-right-pane">
+            <div class="login-form-header">
+                <span class="access-type">NOVA CONTA</span>
+                <a href="ajuda.html" class="help-link">Precisa de ajuda?</a>
+            </div>
+
+            <div class="login-form-wrapper">
+
+                <!-- Formulário -->
+                <div id="cadastroConteudo">
+                    <a href="login.html" class="back-link">Voltar para o login</a>
+
+                    <div class="form-intro">
+                        <h2>Crie sua conta.</h2>
+                        <p>Leva menos de 2 minutos. Sem planilhas, sem complicação.</p>
+                    </div>
+
+                    <form id="formCadastro" class="auth-form" novalidate>
+                        <div class="input-group compact">
+                            <label for="nome">Nome completo</label>
+                            <div class="input-field-wrapper">
+                                <input type="text" id="nome" placeholder="Marina Costa" autocomplete="name" required>
+                            </div>
+                            <span class="field-error" id="erro-nome"></span>
+                        </div>
+
+                        <div class="input-group compact">
+                            <label for="email">E-mail</label>
+                            <div class="input-field-wrapper">
+                                <input type="email" id="email" placeholder="marina@exemplo.com" autocomplete="email" required>
+                            </div>
+                            <span class="field-error" id="erro-email"></span>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group compact">
+                                <label for="cpf">CPF</label>
+                                <div class="input-field-wrapper">
+                                    <input type="text" id="cpf" data-mask="cpf" placeholder="000.000.000-00" inputmode="numeric" required>
+                                </div>
+                                <span class="field-error" id="erro-cpf"></span>
+                            </div>
+
+                            <div class="input-group compact">
+                                <label for="celular">Celular</label>
+                                <div class="input-field-wrapper">
+                                    <input type="tel" id="celular" data-mask="telefone" placeholder="(11) 99999-9999" autocomplete="tel" required>
+                                </div>
+                                <span class="field-error" id="erro-celular"></span>
+                            </div>
+                        </div>
+
+                        <div class="input-group compact">
+                            <label for="senha">Senha</label>
+                            <div class="input-field-wrapper password-wrapper">
+                                <input type="password" id="senha" placeholder="Crie uma senha forte" autocomplete="new-password" required>
+                                <button type="button" class="eye-btn" data-target="senha" aria-label="Mostrar ou ocultar senha" style="color:#6D6274;display:flex"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bars" id="forcaBarras">
+                                    <span></span><span></span><span></span><span></span>
+                                </div>
+                                <span class="strength-label" id="forcaTexto">Use 8 ou mais caracteres, com letras, números e símbolos.</span>
+                            </div>
+                            <span class="field-error" id="erro-senha"></span>
+                        </div>
+
+                        <div class="input-group compact">
+                            <label for="confirmarSenha">Confirmar senha</label>
+                            <div class="input-field-wrapper password-wrapper">
+                                <input type="password" id="confirmarSenha" placeholder="Repita a senha" autocomplete="new-password" required>
+                                <button type="button" class="eye-btn" data-target="confirmarSenha" aria-label="Mostrar ou ocultar senha" style="color:#6D6274;display:flex"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                            </div>
+                            <span class="field-error" id="erro-confirmarSenha"></span>
+                        </div>
+
+                        <div class="terms-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="termos">
+                                <span>Li e concordo com os <a href="#">Termos de uso</a> e a <a href="#">Política de privacidade</a>.</span>
+                            </label>
+                            <span class="field-error" id="erro-termos"></span>
+                        </div>
+
+                        <button type="submit" class="btn-dark-submit">Criar minha conta <span class="arrow">→</span></button>
+                    </form>
+
+                    <div class="register-redirect">
+                        <p>Já investe com a NOVA? <a href="login.html" class="pink-link">Entrar</a></p>
+                    </div>
+
+                    <div class="security-alert-box">
+                     
+                        <p>A NOVA CAPITAL nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
+                    </div>
+                </div>
+
+                <!-- Estado de sucesso -->
+                <div id="cadastroSucesso" class="success-state">
+                    <div class="success-icon">✓</div>
+                    <h2>Conta criada!</h2>
+                    <p>Bem-vindo(a), <strong id="nomeBoasVindas"></strong>. Enviamos um e-mail de confirmação para <strong id="emailBoasVindas"></strong>.</p>
+                    <a href="login.html" class="btn-dark-submit">Ir para o login <span class="arrow">→</span></a>
+                </div>
+
+            </div>
+
+            <div class="login-form-footer">
+                <p>© 2026 NOVA CAPITAL</p>
+                <div class="legal-links">
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos de uso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="autenticacao.js"></script>
+</body>
+
+</html>
