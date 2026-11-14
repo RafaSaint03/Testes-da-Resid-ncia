@@ -72,3 +72,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/// MENU LATERAL RECOLHÍVEL ///
+// Recolhe ou expande a barra lateral (botão ☰) e guarda a escolha
+function toggleSidebar() {
+    const app = document.getElementById('appContainer');
+    const btn = document.getElementById('sidebarToggle');
+    if (!app || !btn) return;
+
+    const recolhido = app.classList.toggle('collapsed');
+    btn.setAttribute('aria-expanded', String(!recolhido));
+    btn.setAttribute('aria-label', recolhido ? 'Expandir menu' : 'Recolher menu');
+
+    try {
+        localStorage.setItem('nexusSidebar', recolhido ? '1' : '0');
+    } catch (e) {}
+}
+
+// Restaura o estado do menu ao abrir a página
+document.addEventListener('DOMContentLoaded', () => {
+    const app = document.getElementById('appContainer');
+    const btn = document.getElementById('sidebarToggle');
+    if (!app || !btn) return;
+
+    let salvo = null;
+    try {
+        salvo = localStorage.getItem('nexusSidebar');
+    } catch (e) {}
+
+    if (salvo === '1') {
+        app.classList.add('collapsed');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Expandir menu');
+    }
+});
