@@ -8,12 +8,12 @@
 }
 
 :root {
-    --bg-main: #140733;       
-    --bg-sidebar: #19093B;    
+    --bg-main: #140733;
+    --bg-sidebar: #19093B;
     --primary-pink: #ffaee0;
     --accent-cream: #FAEBD6;
     --card-cream: #fbf8f3;
-    --text-muted: #ffffff;    
+    --text-muted: #ffffff;
     --border-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -571,7 +571,6 @@ body {
     font-size: 12px;
 }
 
-
 .login-page-body {
     background-color: var(--bg-main);
     min-height: 100vh;
@@ -817,11 +816,6 @@ body {
     text-decoration: none;
 }
 
-
-
-
-
-/* Estilos para o Dashboard Interno (Visão Geral) */
 .dashboard-body {
     background-color: var(--bg-main);
     color: #FFFFFF;
@@ -836,7 +830,6 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
     background-color: #0D0125;
     border-right: 1px solid var(--border-color);
@@ -871,8 +864,9 @@ body {
 }
 
 .sidebar-section-title {
+    display: block;
     font-size: 10px;
-    color: #887B94;
+    color: #A89BB8;
     letter-spacing: 1.5px;
     margin-bottom: 12px;
     font-weight: 700;
@@ -893,7 +887,7 @@ body {
     border-radius: 10px;
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     transition: all 0.2s;
 }
@@ -998,14 +992,12 @@ body {
     cursor: pointer;
 }
 
-
 .main-content {
-    background-color: #0F0426; /* Um degrau acima do fundo principal */
+    background-color: #0F0426;
     display: flex;
     flex-direction: column;
 }
 
-/* Sidebar com o novo tom dedicado */
 .sidebar {
     background-color: var(--bg-sidebar);
     border-right: 1px solid var(--border-color);
@@ -1015,7 +1007,6 @@ body {
     justify-content: space-between;
 }
 
-/* Topbar do Dashboard */
 .dashboard-topbar {
     background-color: var(--bg-sidebar);
     padding: 18px 36px;
@@ -1024,6 +1015,7 @@ body {
     align-items: center;
     border-bottom: 1px solid var(--border-color);
 }
+
 .breadcrumb {
     font-size: 13px;
     color: var(--text-muted);
@@ -1148,7 +1140,6 @@ body {
     background-color: #180C28;
 }
 
-/* Cards de Métricas Superiores */
 .metrics-cards-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1257,7 +1248,6 @@ body {
     font-size: 12px;
 }
 
-/* Gráficos e Alocação */
 .charts-row {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -1342,7 +1332,6 @@ body {
     white-space: nowrap;
 }
 
-/* Alocação Rosca */
 .donut-container {
     display: flex;
     align-items: center;
@@ -1421,7 +1410,6 @@ body {
     background-color: #D8C8FF;
 }
 
-/* Tabela Posições */
 .positions-table-box {
     margin-bottom: 40px;
 }
@@ -1478,7 +1466,6 @@ body {
     font-size: 12px;
 }
 
-/* Regras para gerenciar as telas na mesma página (SPA) */
 .app-screen {
     display: none;
 }
@@ -1489,9 +1476,6 @@ body {
     flex-grow: 1;
 }
 
-/* =========================================================
-   MENU RECOLHÍVEL + AJUSTES DA SIDEBAR
-   ========================================================= */
 .sidebar {
     overflow: hidden;
     transition: padding .25s ease;
@@ -1501,7 +1485,6 @@ body {
     transition: grid-template-columns .25s ease;
 }
 
-/* partes do cabeçalho do menu que não tinham estilo */
 .logo-inner {
     display: flex;
     align-items: center;
@@ -1528,12 +1511,22 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* ícones (PNG) do menu e dos cards */
 .nav-icon {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
+    color: #FFFFFF;
+    opacity: 0.85;
+    transition: opacity .2s, color .2s;
+}
+
+.nav-item:hover .nav-icon {
+    opacity: 1;
+}
+
+.nav-item.active .nav-icon {
+    color: var(--bg-main);
+    opacity: 1;
 }
 
 .card-icon-bg img {
@@ -1542,7 +1535,17 @@ body {
     object-fit: contain;
 }
 
-/* estado recolhido */
+.workspace-selector-box {
+    margin-bottom: 24px;
+}
+
+.account-selector-sidebar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
 .app-container.collapsed {
     grid-template-columns: 80px 1fr;
 }
@@ -1561,7 +1564,8 @@ body {
 .app-container.collapsed .sidebar-section-title,
 .app-container.collapsed .nav-item span,
 .app-container.collapsed .sidebar-footer-card,
-.app-container.collapsed .user-info-text {
+.app-container.collapsed .sidebar .user-info-text,
+.app-container.collapsed .acc-text {
     display: none;
 }
 
@@ -1571,13 +1575,20 @@ body {
     gap: 0;
 }
 
+.app-container.collapsed .account-selector-sidebar {
+    justify-content: center;
+}
+
+.app-container.collapsed .sidebar-toggle-btn {
+    margin: 0 auto;
+}
+
 .app-container.collapsed .user-profile-box {
     flex-direction: column;
     gap: 10px;
     justify-content: center;
 }
 
-/* seletor de conta (topo) */
 .account-selector {
     flex-direction: row;
     align-items: center;
@@ -1604,10 +1615,6 @@ body {
     flex-shrink: 0;
 }
 
-/* =========================================================
-   VISÃO GERAL: GRÁFICOS E TABELA DE POSIÇÕES (versão .v2)
-   Escopado em .v2 para não afetar outras páginas.
-   ========================================================= */
 .charts-row.v2 {
     grid-template-columns: 1.9fr 1fr;
     gap: 20px;
@@ -1634,7 +1641,6 @@ body {
     margin-right: 6px;
 }
 
-/* --- barras --- */
 .charts-row.v2 .date-filter.small {
     background: #F3E9E0;
     border-color: transparent;
@@ -1693,7 +1699,6 @@ body {
     border-radius: 6px;
 }
 
-/* --- alocação (cartão escuro) --- */
 .charts-row.v2 .allocation-box {
     background: var(--bg-main);
     border-color: #2A1244;
@@ -1777,7 +1782,6 @@ body {
     background: #EADFD0;
 }
 
-/* --- tabela --- */
 .positions-table-box.v2 {
     padding: 0;
     overflow: hidden;
@@ -1872,4 +1876,27 @@ body {
     .charts-row.v2 {
         grid-template-columns: 1fr;
     }
+}
+
+.user-profile-topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-profile-topbar .user-info-text {
+    flex-grow: 0;
+    line-height: 1.25;
+}
+
+.icon-help,
+.icon-dots {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.settings-dots {
+    display: flex;
+    align-items: center;
 }
