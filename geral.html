@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS - Visão Geral</title>
+    <title>NEXUS - Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bonitinho.css">
 </head>
@@ -12,7 +12,6 @@
 <body class="dashboard-body">
 
     <div class="app-container" id="appContainer">
-        <!-- Sidebar: Workspace e Navegação -->
         <aside class="sidebar">
             <div>
                 <div class="sidebar-logo">
@@ -26,7 +25,6 @@
                         aria-label="Recolher menu" aria-expanded="true" title="Recolher/expandir menu">☰</button>
                 </div>
 
-                <!-- Empresa / Conta Gerenciada Ativa -->
                 <div class="workspace-selector-box">
                     <span class="sidebar-section-title">CONTA ATIVA</span>
                     <div class="account-selector-sidebar">
@@ -41,22 +39,28 @@
                 <span class="sidebar-section-title">NAVEGAÇÃO</span>
                 <nav class="sidebar-nav">
                     <a href="geral.html" class="nav-item active" title="Visão geral">
-                        <img src="Icones/target.png" alt="" class="nav-icon"> <span>Visão geral</span>
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                        <span>Visão geral</span>
                     </a>
                     <a href="clientes.html" class="nav-item" title="Clientes">
-                        <img src="Icones/wallet.png" alt="" class="nav-icon"> <span>Clientes</span>
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>Clientes</span>
                     </a>
                     <a href="carteiras.html" class="nav-item" title="Carteiras">
-                        <img src="Icones/badge-dollar-sign.png" alt="" class="nav-icon"> <span>Carteiras</span>
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+                        <span>Carteiras</span>
                     </a>
                     <a href="movimentacoes.html" class="nav-item" title="Movimentações">
-                        <img src="Icones/Vector.png" alt="" class="nav-icon"> <span>Movimentações</span>
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+                        <span>Movimentações</span>
                     </a>
                     <a href="investimentos.html" class="nav-item" title="Investimentos">
-                        <img src="Icones/target.png" alt="" class="nav-icon"> <span>Investimentos</span>
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                        <span>Investimentos</span>
                     </a>
                     <a href="relatorios.html" class="nav-item" title="Relatórios">
-                        <img src="Icones/Vector.png" alt="" class="nav-icon"> <span>Relatórios</span>
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 18v-2"/><path d="M12 18v-6"/><path d="M16 18v-4"/></svg>
+                        <span>Relatórios</span>
                     </a>
                 </nav>
             </div>
@@ -75,9 +79,7 @@
             </div>
         </aside>
 
-        <!-- Conteúdo Principal -->
         <main class="main-content">
-            <!-- Topbar: Usuária Logada e Notificações -->
             <header class="dashboard-topbar">
                 <div class="breadcrumb">
                     <span>Investimentos</span> / <span class="current-crumb">Visão geral</span>
@@ -89,18 +91,17 @@
                     <button class="icon-btn" title="Notificações">
                         <img src="Icones/bell.svg" alt="Notificação" class="bell-icon">
                     </button>
-                    
-                    <!-- Perfil da Operadora / Assessora -->
+
                     <div class="user-profile-topbar">
                         <div class="user-avatar-circle">MC</div>
                         <div class="user-info-text">
                             <span class="user-name">Marina Costa</span>
                             <span class="user-role">Assessora sênior</span>
                         </div>
-<span class="settings-dots" title="Sair" style="cursor:pointer" onclick="window.location.href='index.html'">
-        <img src="Icones/trespontinhos.png" alt="Sair" class="icon-dots">
-    </span>
-</div>
+                        <span class="settings-dots" title="Sair" style="cursor:pointer" onclick="window.location.href='index.html'">
+                            <img src="Icones/trespontinhos.png" alt="Sair" class="icon-dots">
+                        </span>
+                    </div>
                 </div>
             </header>
 
@@ -120,7 +121,6 @@
                     </div>
                 </div>
 
-                <!-- Grid de Métricas Superiores -->
                 <div class="metrics-cards-grid">
                     <div class="metric-card-dark">
                         <div class="metric-card-header">
@@ -167,7 +167,6 @@
                     </div>
                 </div>
 
-                <!-- Gráficos -->
                 <div class="charts-row v2">
                     <div class="chart-box-main">
                         <div class="chart-header-row">
@@ -231,7 +230,6 @@
                     </div>
                 </div>
 
-                <!-- Tabela de Posições -->
                 <div class="positions-table-box v2">
                     <div class="table-header-row">
                         <div>
