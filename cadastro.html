@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Capital - Criar conta</title>
+    <title>NEXUS - Criar conta</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bonitinho.css">
     <link rel="stylesheet" href="auth-extras.css">
@@ -13,32 +13,31 @@
 <body class="login-page-body">
 
     <div class="login-split-container">
-        <!-- Lado esquerdo: benefícios -->
         <div class="login-left-pane">
             <div class="login-left-content">
-                <h1 class="login-title">Comece a investir com clareza, no seu ritmo.</h1>
+                <h1 class="login-title">Gestão financeira completa para sua empresa e para você.</h1>
 
                 <div class="login-card-preview">
                     <ul class="benefit-list">
                         <li class="benefit-item">
                             <span class="benefit-icon">✓</span>
                             <div>
-                                <strong>Tudo em uma única visão</strong>
-                                <span>Investimentos, metas e evolução patrimonial sem planilhas.</span>
+                                <strong>Toda a operação em uma única visão</strong>
+                                <span>Fluxo de caixa, contas a pagar e a receber de CNPJs e CPFs, sem planilhas.</span>
                             </div>
                         </li>
                         <li class="benefit-item">
                             <span class="benefit-icon">✓</span>
                             <div>
-                                <strong>Estratégias que fazem sentido</strong>
-                                <span>Recomendações alinhadas ao seu momento e tolerância a risco.</span>
+                                <strong>Decisões baseadas em dados</strong>
+                                <span>Relatórios e indicadores em tempo real para acompanhar metas e a saúde financeira do negócio.</span>
                             </div>
                         </li>
                         <li class="benefit-item">
                             <span class="benefit-icon">✓</span>
                             <div>
                                 <strong>Segurança de ponta a ponta</strong>
-                                <span>Criptografia e camadas avançadas de autenticação.</span>
+                                <span>Criptografia, controle de permissões por usuário e autenticação em múltiplas camadas.</span>
                             </div>
                         </li>
                     </ul>
@@ -48,11 +47,10 @@
             <div class="login-left-footer">
                 <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Ambiente protegido</span>
                 <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Dados criptografados</span>
-                <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> Instituição verificada</span>
+                <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> Plataforma verificada</span>
             </div>
         </div>
 
-        <!-- Lado direito: formulário -->
         <div class="login-right-pane">
             <div class="login-form-header">
                 <span class="access-type">NOVA CONTA</span>
@@ -61,18 +59,17 @@
 
             <div class="login-form-wrapper">
 
-                <!-- Formulário -->
                 <div id="cadastroConteudo">
                     <a href="login.html" class="back-link">Voltar para o login</a>
 
                     <div class="form-intro">
                         <h2>Crie sua conta.</h2>
-                        <p>Leva menos de 2 minutos. Sem planilhas, sem complicação.</p>
+                        <p>Leva menos de 2 minutos. Organize as finanças da sua empresa e as suas em um só lugar.</p>
                     </div>
 
                     <form id="formCadastro" class="auth-form" novalidate>
                         <div class="input-group compact">
-                            <label for="nome">Nome completo</label>
+                            <label for="nome">Nome completo do administrador</label>
                             <div class="input-field-wrapper">
                                 <input type="text" id="nome" placeholder="Marina Costa" autocomplete="name" required>
                             </div>
@@ -80,9 +77,9 @@
                         </div>
 
                         <div class="input-group compact">
-                            <label for="email">E-mail</label>
+                            <label for="email">E-mail profissional</label>
                             <div class="input-field-wrapper">
-                                <input type="email" id="email" placeholder="marina@exemplo.com" autocomplete="email" required>
+                                <input type="email" id="email" placeholder="marina@suaempresa.com.br" autocomplete="email" required>
                             </div>
                             <span class="field-error" id="erro-email"></span>
                         </div>
@@ -141,16 +138,14 @@
                     </form>
 
                     <div class="register-redirect">
-                        <p>Já investe com a NOVA? <a href="login.html" class="pink-link">Entrar</a></p>
+                        <p>Já usa a NEXUS? <a href="login.html" class="pink-link">Entrar</a></p>
                     </div>
 
                     <div class="security-alert-box">
-                     
-                        <p>A NOVA CAPITAL nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
+                        <p>A NEXUS nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
                     </div>
                 </div>
 
-                <!-- Estado de sucesso -->
                 <div id="cadastroSucesso" class="success-state">
                     <div class="success-icon">✓</div>
                     <h2>Conta criada!</h2>
@@ -161,7 +156,7 @@
             </div>
 
             <div class="login-form-footer">
-                <p>© 2026 NOVA CAPITAL</p>
+                <p>© 2026 NEXUS</p>
                 <div class="legal-links">
                     <a href="#">Privacidade</a>
                     <a href="#">Termos de uso</a>
