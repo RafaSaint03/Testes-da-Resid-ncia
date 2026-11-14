@@ -12,7 +12,7 @@
 <body class="dashboard-body">
 
     <div class="app-container" id="appContainer">
-    
+
         <aside class="sidebar">
             <div>
                 <div class="sidebar-logo">
@@ -20,13 +20,12 @@
                         <div class="logo-badge">N</div>
                         <div class="logo-text-group">
                             <span class="logo-title">NEXUS</span>
-                          
                         </div>
                     </div>
-                    <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Recolher menu" aria-expanded="true" title="Recolher/expandir menu">☰</button>
+                    <button class="sidebar-toggle-btn" id="sidebarToggle" onclick="toggleSidebar()"
+                        aria-label="Recolher menu" aria-expanded="true" title="Recolher/expandir menu">☰</button>
                 </div>
 
-              
                 <div class="workspace-selector-box">
                     <span class="sidebar-section-title">CONTA ATIVA</span>
                     <div class="account-selector-sidebar">
@@ -41,22 +40,28 @@
                 <span class="sidebar-section-title">NAVEGAÇÃO</span>
                 <nav class="sidebar-nav">
                     <a href="geral.html" class="nav-item" title="Visão geral">
-                        <img src="Icones/target.png" alt="" class="nav-icon"> <span>Visão geral</span>
+                        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                        <span>Visão geral</span>
                     </a>
                     <a href="clientes.html" class="nav-item active" title="Clientes">
-                        <img src="Icones/wallet.png" alt="" class="nav-icon"> <span>Clientes</span>
+                        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>Clientes</span>
                     </a>
                     <a href="carteiras.html" class="nav-item" title="Carteiras">
-                        <img src="Icones/badge-dollar-sign.png" alt="" class="nav-icon"> <span>Carteiras</span>
+                        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+                        <span>Carteiras</span>
                     </a>
                     <a href="movimentacoes.html" class="nav-item" title="Movimentações">
-                        <img src="Icones/Vector.png" alt="" class="nav-icon"> <span>Movimentações</span>
+                        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+                        <span>Movimentações</span>
                     </a>
                     <a href="investimentos.html" class="nav-item" title="Investimentos">
-                        <img src="Icones/target.png" alt="" class="nav-icon"> <span>Investimentos</span>
+                        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                        <span>Investimentos</span>
                     </a>
                     <a href="relatorios.html" class="nav-item" title="Relatórios">
-                        <img src="Icones/Vector.png" alt="" class="nav-icon"> <span>Relatórios</span>
+                        <svg class="nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 18v-2"/><path d="M12 18v-6"/><path d="M16 18v-4"/></svg>
+                        <span>Relatórios</span>
                     </a>
                 </nav>
             </div>
@@ -121,7 +126,7 @@
                         <div class="metric-card-dark">
                             <div class="card-header">
                                 <span class="card-label-light">Clientes na base</span>
-                                <div class="card-icon-bg pink">👤</div>
+                                <div class="card-icon-bg pink"><img src="Icones/user-round-check.png" alt=""></div>
                             </div>
                             <div class="metric-value-white">852</div>
                             <div class="metric-footer-badge"><span class="badge-green">+12 este mês</span></div>
@@ -129,7 +134,7 @@
                         <div class="metric-card-light">
                             <div class="card-header">
                                 <span class="card-label-dark">Patrimônio sob gestão</span>
-                                <div class="card-icon-bg cream">🏛️</div>
+                                <div class="card-icon-bg cream"><img src="Icones/landmark.png" alt=""></div>
                             </div>
                             <div class="metric-value-dark">R$ 8,4 mi</div>
                             <div class="metric-footer-badge"><span class="badge-green-soft">+6,8%</span></div>
@@ -137,7 +142,7 @@
                         <div class="metric-card-light">
                             <div class="card-header">
                                 <span class="card-label-dark">Cadastros em análise</span>
-                                <div class="card-icon-bg cream">👤</div>
+                                <div class="card-icon-bg cream"><img src="Icones/user-round-check.png" alt=""></div>
                             </div>
                             <div class="metric-value-dark">08</div>
                             <span class="sub-text-dark">3 pendentes</span>
@@ -228,12 +233,98 @@
                                 <div><strong>E-mail:</strong> ana.martins@alvorada.com</div>
                                 <div><strong>Celular:</strong> (11) 99842-1730</div>
                                 <div><strong>CPF:</strong> ***.482.***-09</div>
-                                <div><strong>Cidade:</strong> São Paulo
+                                <div><strong>Cidade:</strong> São Paulo</div>
+                                <div><strong>Perfil:</strong> Arrojado</div>
+                                <div><strong>Status:</strong> <span class="badge-table-green">Ativo</span></div>
+                            </div>
+                        </div>
 
-                        
-    </main>
-    </div> <!-- fecha .app-container -->
+                        <div class="chart-box-main" style="display: flex; flex-direction: column; gap: 20px;">
+                            <h3>Histórico de relacionamento</h3>
+                            <div style="font-size: 13px; color:#554A5E; display: flex; flex-direction: column; gap: 14px;">
+                                <div><strong>Hoje, 10:32</strong><br>Movimentação registrada na carteira principal.</div>
+                                <div><strong>15/09/2026</strong><br>Reunião de acompanhamento trimestral.</div>
+                                <div><strong>02/06/2026</strong><br>Revisão do perfil de risco.</div>
+                                <div><strong>Set/2024</strong><br>Início do relacionamento.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TELA: NOVO CLIENTE -->
+            <section id="screen-novo" class="app-screen">
+                <div class="content-wrapper">
+                    <div class="page-title-row">
+                        <div>
+                            <h1>Novo cliente</h1>
+                            <p class="section-desc">Preencha os dados para cadastrar um novo cliente na base.</p>
+                        </div>
+                        <button class="date-filter" data-screen="screen-clientes">← Voltar para clientes</button>
+                    </div>
+
+                    <div class="chart-box-main">
+                        <form class="auth-form" style="max-width: 560px;" onsubmit="return false;">
+                            <div class="input-group">
+                                <label for="novoNome">Nome completo</label>
+                                <div class="input-field-wrapper">
+                                    <input type="text" id="novoNome" placeholder="Nome do cliente">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="novoEmail">E-mail</label>
+                                <div class="input-field-wrapper">
+                                    <input type="email" id="novoEmail" placeholder="cliente@exemplo.com">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="novoCelular">Celular</label>
+                                <div class="input-field-wrapper">
+                                    <input type="tel" id="novoCelular" placeholder="(11) 99999-9999">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="novoCpf">CPF</label>
+                                <div class="input-field-wrapper">
+                                    <input type="text" id="novoCpf" placeholder="000.000.000-00" inputmode="numeric">
+                                </div>
+                            </div>
+                            <button type="button" class="btn-pink-solid" data-screen="screen-clientes">Salvar cliente</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script src="funcionalidades.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const telas = document.querySelectorAll('.app-screen');
+            const titulo = document.getElementById('breadcrumb-title');
+            const nomes = {
+                'screen-clientes': 'Central de clientes',
+                'screen-detalhes': 'Detalhes do cliente',
+                'screen-novo': 'Novo cliente'
+            };
+
+            document.querySelectorAll('[data-screen]').forEach(el => {
+                el.addEventListener('click', () => {
+                    const alvo = el.getAttribute('data-screen');
+                    telas.forEach(t => t.classList.toggle('active', t.id === alvo));
+                    if (titulo && nomes[alvo]) titulo.textContent = nomes[alvo];
+                    window.scrollTo({ top: 0 });
+                });
+            });
+
+            const logout = document.getElementById('btnLogout');
+            if (logout) {
+                logout.addEventListener('click', () => {
+                    window.location.href = 'index.html';
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
