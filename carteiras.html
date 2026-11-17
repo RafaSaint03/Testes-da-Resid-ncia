@@ -12,7 +12,6 @@
 <body class="dashboard-body">
 
     <div class="app-container" id="appContainer">
-
         <aside class="sidebar">
             <div>
                 <div class="sidebar-logo">
@@ -115,8 +114,30 @@
                         <p class="section-desc">Acompanhe as carteiras dos clientes e a composição consolidada.</p>
                     </div>
                     <div class="filter-export-group">
-                        <div class="date-filter">
-                            <span>📅 01–30 set 2026</span>
+                        <div class="periodo-wrap">
+                            <button type="button" class="date-filter" id="btnPeriodo" aria-expanded="false" aria-haspopup="true">
+                                <img src="Icones/Vector.png" alt="" class="cal-icon">
+                                <span id="periodoLabel">01–30 set 2026</span>
+                                <span class="arrow-down">⌄</span>
+                            </button>
+
+                            <div class="periodo-pop" id="periodoPop" hidden>
+                                <span class="periodo-title">PERÍODO</span>
+                                <div class="periodo-presets">
+                                    <button type="button" data-preset="mes">Este mês</button>
+                                    <button type="button" data-preset="mesPassado">Mês passado</button>
+                                    <button type="button" data-preset="30d">Últimos 30 dias</button>
+                                    <button type="button" data-preset="90d">Últimos 90 dias</button>
+                                    <button type="button" data-preset="ano">Este ano</button>
+                                </div>
+                                <span class="periodo-title">PERSONALIZADO</span>
+                                <div class="periodo-custom">
+                                    <label>De <input type="date" id="dataInicio"></label>
+                                    <label>Até <input type="date" id="dataFim"></label>
+                                </div>
+                                <p class="periodo-erro" id="periodoErro" hidden>A data final precisa ser depois da inicial.</p>
+                                <button type="button" class="periodo-aplicar" id="periodoAplicar">Aplicar</button>
+                            </div>
                         </div>
                         <button id="btnExportarCarteiras" class="btn-pink-solid">
                             <span>⬇</span> Exportar
@@ -160,10 +181,10 @@
                     </div>
                 </div>
 
-                <!-- Busca + abas + filtro de perfil -->
+               
                 <div class="toolbar-row">
                     <label class="search-box">
-                        <span>🔍</span>
+                        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
                         <input type="text" id="buscaCliente" placeholder="Buscar cliente ou carteira" autocomplete="off">
                     </label>
 
@@ -184,7 +205,6 @@
                     </div>
                 </div>
 
-                <!-- Carteiras dos clientes + Distribuição -->
                 <div class="carteiras-row">
 
                     <div class="positions-table-box v2">
@@ -239,7 +259,7 @@
                     </aside>
                 </div>
 
-                <!-- Posições consolidadas -->
+            
                 <div class="positions-table-box v2">
                     <div class="table-header-row">
                         <div>
