@@ -4,20 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Capital - Central de ajuda</title>
+    <title>NEXUS - Central de ajuda</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bonitinho.css">
-    <link rel="stylesheet" href="auth-extras.css">
-    <link rel="stylesheet" href="ajuda.css">
 </head>
 
 <body>
 
     <header class="header">
         <div class="header-container">
-            <a href="index.html" class="logo-area" style="text-decoration:none;color:#FFFFFF">
+            <a href="index.html" class="logo-area">
                 <div class="logo-badge">N</div>
-                <span class="logo-text">NOVA CAPITAL</span>
+                <span class="logo-text">NEXUS</span>
             </a>
             <div class="header-actions">
                 <a href="login.html" class="btn-entrar" id="btnVoltar">Voltar</a>
@@ -26,7 +24,6 @@
         </div>
     </header>
 
-    <!-- Busca -->
     <section class="help-hero">
         <div class="container">
             <div class="help-tag">CENTRAL DE AJUDA</div>
@@ -34,7 +31,10 @@
             <p>Busque pela sua dúvida ou escolha um tema abaixo. Se não encontrar, fale com a gente.</p>
 
             <form id="formBusca" class="help-search" role="search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" />
+                    <line x1="21" y1="21" x2="16.5" y2="16.5" />
+                </svg>
                 <input type="search" id="buscaAjuda" placeholder="Ex.: esqueci minha senha" aria-label="Buscar na central de ajuda" autocomplete="off">
             </form>
         </div>
@@ -43,7 +43,6 @@
     <section class="help-section">
         <div class="container help-layout">
 
-            <!-- Perguntas frequentes -->
             <div id="duvidas">
                 <h2 class="help-block-title">Perguntas frequentes</h2>
                 <p class="help-block-sub">Respostas rápidas para as dúvidas mais comuns. <span id="faqContador"></span></p>
@@ -93,7 +92,7 @@
                     </details>
 
                     <details class="faq-item" data-cat="seguranca" id="faq-senha-por-telefone">
-                        <summary>A NOVA CAPITAL pede minha senha por telefone ou mensagem?</summary>
+                        <summary>A NEXUS pede minha senha por telefone ou mensagem?</summary>
                         <div class="faq-answer">
                             Nunca. Não solicitamos senhas ou códigos por telefone, e-mail ou mensagens. Se alguém pedir esses dados em nosso nome, não responda e avise o nosso suporte.
                         </div>
@@ -119,11 +118,10 @@
                 </div>
 
                 <div class="security-alert-box">
-                    <p><strong>Dica de segurança:</strong> a NOVA CAPITAL nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
+                    <p><strong>Dica de segurança:</strong> a NEXUS nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
                 </div>
             </div>
 
-            <!-- Contato -->
             <aside id="contato" class="help-side">
                 <div class="contact-card">
                     <h3>Fale com a gente</h3>
@@ -131,17 +129,22 @@
 
                     <div class="contact-row">
                         <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                <path d="M3 7l9 6 9-6" />
+                            </svg>
                         </div>
                         <div>
                             <strong>E-mail</strong>
-                            <a href="mailto:suporte@novacapital.com.br">suporte@novacapital.com.br</a>
+                            <a href="mailto:suporte@nexus.com.br">suporte@nexus.com.br</a>
                         </div>
                     </div>
 
                     <div class="contact-row">
                         <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+                            </svg>
                         </div>
                         <div>
                             <strong>Telefone</strong>
@@ -151,7 +154,10 @@
 
                     <div class="contact-row">
                         <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 7v5l3 2" />
+                            </svg>
                         </div>
                         <div>
                             <strong>Horário de atendimento</strong>
@@ -221,14 +227,13 @@
         </div>
     </section>
 
-    <footer class="footer" style="padding:40px 0">
-        <div class="container footer-bottom" style="border-top:none;padding-top:0">
-            <p>© 2026 Nova Capital. Todos os direitos reservados.</p>
-            <p>Instituição parceira autorizada pelo Banco Central do Brasil.</p>
-        </div>
+    <footer class="footer help-footer">
+        <div class="container footer-bottom help-footer-bottom">
+            <p>© 2026 NEXUS. Todos os direitos reservados.</p>
+                  </div>
     </footer>
 
-    <script src="ajuda.js"></script>
+    <script src="funcionalidades.js"></script>
 </body>
 
 </html>
