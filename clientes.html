@@ -79,7 +79,7 @@
                 </div>
             </div>
         </aside>
-       
+
         <main class="main-content">
             <header class="dashboard-topbar">
                 <div class="breadcrumb">
@@ -150,43 +150,45 @@
                         <div class="table-header-row">
                             <h3>Filtros e Listagem</h3>
                         </div>
-                        <table class="positions-table">
-                            <thead>
-                                <tr>
-                                    <th>CLIENTE</th>
-                                    <th>STATUS</th>
-                                    <th>PATRIMÔNIO</th>
-                                    <th>PERFIL</th>
-                                    <th>ÚLTIMA MOVIMENTAÇÃO</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="cursor: pointer;" data-screen="screen-detalhes">
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <div class="user-avatar-circle"
-                                                style="width: 28px; height: 28px; font-size: 11px;">AM</div>
-                                            <div>
-                                                <strong>Ana Luiza Martins</strong><br>
-                                                <small style="color:#6D6274;">ana.martins@alvorada.com</small>
+                        <div class="table-responsive">
+                            <table class="positions-table">
+                                <thead>
+                                    <tr>
+                                        <th>CLIENTE</th>
+                                        <th>STATUS</th>
+                                        <th>PATRIMÔNIO</th>
+                                        <th>PERFIL</th>
+                                        <th>ÚLTIMA MOVIMENTAÇÃO</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="cursor: pointer;" data-screen="screen-detalhes">
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <div class="user-avatar-circle"
+                                                    style="width: 28px; height: 28px; font-size: 11px;">AM</div>
+                                                <div>
+                                                    <strong>Ana Luiza Martins</strong><br>
+                                                    <small style="color:#6D6274;">ana.martins@alvorada.com</small>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge-table-green">Ativo</span></td>
-                                    <td>R$ 1.240.000</td>
-                                    <td>
-                                        <span style="background:#E7D7C2; padding:2px 8px; border-radius:4px; font-size:11px;">Arrojado</span>
-                                    </td>
-                                    <td>Hoje, 10:32</td>
-                                    <td>
-                                        <span class="dots-menu" title="Opções">
-                                            <img src="Icones/trespontinhos.png" alt="Opções" class="icon-dots">
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </td>
+                                        <td><span class="badge-table-green">Ativo</span></td>
+                                        <td>R$ 1.240.000</td>
+                                        <td>
+                                            <span style="background:#E7D7C2; padding:2px 8px; border-radius:4px; font-size:11px;">Arrojado</span>
+                                        </td>
+                                        <td>Hoje, 10:32</td>
+                                        <td>
+                                            <span class="dots-menu" title="Opções">
+                                                <img src="Icones/trespontinhos.png" alt="Opções" class="icon-dots">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -251,44 +253,365 @@
 
             <!-- TELA: NOVO CLIENTE -->
             <section id="screen-novo" class="app-screen">
+                <style>
+                    .novo-layout {
+                        display: grid;
+                        grid-template-columns: 1.75fr 1fr;
+                        gap: 20px;
+                        align-items: start;
+                    }
+                    .novo-main-stack,
+                    .novo-side-stack {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                    }
+                    .novo-card {
+                        background: #FFFFFF;
+                        border: 1px solid #E7D7C2;
+                        border-radius: 20px;
+                        padding: 24px;
+                    }
+                    .novo-card-title {
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: var(--bg-main);
+                        margin-bottom: 4px;
+                    }
+                    .novo-card-sub {
+                        font-size: 12px;
+                        color: #6D6274;
+                        margin-bottom: 18px;
+                    }
+                    .novo-grid-2 {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 16px;
+                    }
+                    .novo-helper {
+                        font-size: 11px;
+                        color: #6D6274;
+                        margin-top: 8px;
+                    }
+                    .novo-assessor-card {
+                        background: var(--bg-main);
+                        color: #FFFFFF;
+                        border-radius: 20px;
+                        padding: 24px;
+                    }
+                    .novo-assessor-top {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        margin-bottom: 14px;
+                    }
+                    .novo-assessor-desc {
+                        font-size: 12px;
+                        color: #D8C8FF;
+                        line-height: 1.5;
+                        margin-bottom: 16px;
+                    }
+                    .novo-status-pill {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        background: #FDE9CB;
+                        color: #B5690A;
+                        font-size: 11px;
+                        font-weight: 600;
+                        padding: 4px 10px;
+                        border-radius: 99px;
+                    }
+                    .novo-checklist {
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 14px;
+                    }
+                    .novo-check-item {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 10px;
+                        font-size: 12px;
+                        color: #6D6274;
+                    }
+                    .novo-check-item input {
+                        margin-top: 2px;
+                        accent-color: #FF47B0;
+                        cursor: pointer;
+                    }
+                    .novo-check-item strong {
+                        display: block;
+                        font-size: 13px;
+                        color: var(--bg-main);
+                    }
+                    .novo-privacy-note {
+                        font-size: 11px;
+                        color: #6D6274;
+                        padding: 0 4px;
+                    }
+                    .novo-lgpd-row {
+                        margin-top: 20px;
+                        padding-top: 16px;
+                        border-top: 1px solid #E7D7C2;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 16px;
+                        flex-wrap: wrap;
+                    }
+                    .novo-actions {
+                        display: flex;
+                        gap: 12px;
+                        margin-left: auto;
+                    }
+                    @media (max-width: 980px) {
+                        .novo-layout {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+                    @media (max-width: 600px) {
+                        .novo-grid-2 {
+                            grid-template-columns: 1fr;
+                        }
+                        .novo-actions {
+                            width: 100%;
+                            justify-content: flex-end;
+                        }
+                    }
+                </style>
+
                 <div class="content-wrapper">
                     <div class="page-title-row">
                         <div>
                             <h1>Novo cliente</h1>
-                            <p class="section-desc">Preencha os dados para cadastrar um novo cliente na base.</p>
+                            <p class="section-desc">Cadastre os dados e o perfil para iniciar o acompanhamento.</p>
                         </div>
-                        <button class="date-filter" data-screen="screen-clientes">← Voltar para clientes</button>
+                        <button type="button" class="date-filter" data-screen="screen-clientes">← Voltar para clientes</button>
                     </div>
 
-                    <div class="chart-box-main">
-                        <form class="auth-form" style="max-width: 560px;" onsubmit="return false;">
-                            <div class="input-group">
-                                <label for="novoNome">Nome completo</label>
-                                <div class="input-field-wrapper">
-                                    <input type="text" id="novoNome" placeholder="Nome do cliente">
+                    <form id="formNovoCliente" class="auth-form" onsubmit="return false;">
+                        <div class="novo-layout">
+                            <div class="novo-main-stack">
+                                <!-- Dados pessoais -->
+                                <div class="novo-card">
+                                    <h2 class="novo-card-title">Dados pessoais</h2>
+                                    <p class="novo-card-sub">Informações para identificação do cliente.</p>
+
+                                    <div class="input-group">
+                                        <label for="novoNome">Nome completo *</label>
+                                        <div class="input-field-wrapper">
+                                            <input type="text" id="novoNome" placeholder="Digite o nome completo" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="novo-grid-2">
+                                        <div class="input-group" style="margin-bottom: 0;">
+                                            <label for="novoCpf">CPF *</label>
+                                            <div class="input-field-wrapper">
+                                                <input type="text" id="novoCpf" placeholder="000.000.000-00" inputmode="numeric" required>
+                                            </div>
+                                        </div>
+                                        <div class="input-group" style="margin-bottom: 0;">
+                                            <label for="novoNascimento">Data de nascimento *</label>
+                                            <div class="input-field-wrapper">
+                                                <input type="text" id="novoNascimento" placeholder="DD/MM/AAAA" inputmode="numeric" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Contato -->
+                                <div class="novo-card">
+                                    <h2 class="novo-card-title">Contato</h2>
+                                    <p class="novo-card-sub">Use os dados de contato preferenciais do cliente.</p>
+
+                                    <div class="novo-grid-2">
+                                        <div class="input-group">
+                                            <label for="novoEmail">E-mail *</label>
+                                            <div class="input-field-wrapper">
+                                                <input type="email" id="novoEmail" placeholder="nome@empresa.com.br" required>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="novoCelular">Celular *</label>
+                                            <div class="input-field-wrapper">
+                                                <input type="tel" id="novoCelular" placeholder="(00) 00000-0000" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="novo-grid-2">
+                                        <div class="input-group" style="margin-bottom: 0;">
+                                            <label for="novoCidade">Cidade</label>
+                                            <div class="input-field-wrapper">
+                                                <input type="text" id="novoCidade" placeholder="Informe a cidade">
+                                            </div>
+                                        </div>
+                                        <div class="input-group" style="margin-bottom: 0;">
+                                            <label for="novoEstado">Estado</label>
+                                            <div class="input-field-wrapper">
+                                                <select id="novoEstado">
+                                                    <option value="">Selecione o estado</option>
+                                                    <option value="AC">Acre (AC)</option>
+                                                    <option value="AL">Alagoas (AL)</option>
+                                                    <option value="AP">Amapá (AP)</option>
+                                                    <option value="AM">Amazonas (AM)</option>
+                                                    <option value="BA">Bahia (BA)</option>
+                                                    <option value="CE">Ceará (CE)</option>
+                                                    <option value="DF">Distrito Federal (DF)</option>
+                                                    <option value="ES">Espírito Santo (ES)</option>
+                                                    <option value="GO">Goiás (GO)</option>
+                                                    <option value="MA">Maranhão (MA)</option>
+                                                    <option value="MT">Mato Grosso (MT)</option>
+                                                    <option value="MS">Mato Grosso do Sul (MS)</option>
+                                                    <option value="MG">Minas Gerais (MG)</option>
+                                                    <option value="PA">Pará (PA)</option>
+                                                    <option value="PB">Paraíba (PB)</option>
+                                                    <option value="PR">Paraná (PR)</option>
+                                                    <option value="PE">Pernambuco (PE)</option>
+                                                    <option value="PI">Piauí (PI)</option>
+                                                    <option value="RJ">Rio de Janeiro (RJ)</option>
+                                                    <option value="RN">Rio Grande do Norte (RN)</option>
+                                                    <option value="RS">Rio Grande do Sul (RS)</option>
+                                                    <option value="RO">Rondônia (RO)</option>
+                                                    <option value="RR">Roraima (RR)</option>
+                                                    <option value="SC">Santa Catarina (SC)</option>
+                                                    <option value="SP">São Paulo (SP)</option>
+                                                    <option value="SE">Sergipe (SE)</option>
+                                                    <option value="TO">Tocantins (TO)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Perfil de investidor -->
+                                <div class="novo-card">
+                                    <h2 class="novo-card-title">Perfil de investidor</h2>
+                                    <p class="novo-card-sub">O perfil deve refletir o questionário de suitability do cliente.</p>
+
+                                    <div class="novo-grid-2">
+                                        <div class="input-group">
+                                            <label for="novoPerfil">Perfil *</label>
+                                            <div class="input-field-wrapper">
+                                                <select id="novoPerfil" required>
+                                                    <option value="">Selecione o perfil</option>
+                                                    <option value="Conservador">Conservador</option>
+                                                    <option value="Moderado">Moderado</option>
+                                                    <option value="Arrojado">Arrojado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="novoObjetivo">Objetivo principal *</label>
+                                            <div class="input-field-wrapper">
+                                                <select id="novoObjetivo" required>
+                                                    <option value="">Selecione o objetivo</option>
+                                                    <option value="Preservação de capital">Preservação de capital</option>
+                                                    <option value="Renda passiva">Renda passiva</option>
+                                                    <option value="Crescimento patrimonial">Crescimento patrimonial</option>
+                                                    <option value="Aposentadoria">Aposentadoria</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="novo-grid-2">
+                                        <div class="input-group" style="margin-bottom: 0;">
+                                            <label for="novoHorizonte">Horizonte de investimento</label>
+                                            <div class="input-field-wrapper">
+                                                <select id="novoHorizonte">
+                                                    <option value="">Selecione o prazo</option>
+                                                    <option value="Curto prazo (até 1 ano)">Curto prazo (até 1 ano)</option>
+                                                    <option value="Médio prazo (1 a 5 anos)">Médio prazo (1 a 5 anos)</option>
+                                                    <option value="Longo prazo (acima de 5 anos)">Longo prazo (acima de 5 anos)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="input-group" style="margin-bottom: 0;">
+                                            <label for="novoPatrimonio">Patrimônio inicial estimado</label>
+                                            <div class="input-field-wrapper">
+                                                <input type="text" id="novoPatrimonio" placeholder="R$ 0,00" inputmode="decimal">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="novo-helper">Perfis disponíveis: Conservador, Moderado e Arrojado.</p>
                                 </div>
                             </div>
-                            <div class="input-group">
-                                <label for="novoEmail">E-mail</label>
-                                <div class="input-field-wrapper">
-                                    <input type="email" id="novoEmail" placeholder="cliente@exemplo.com">
+
+                            <!-- Coluna lateral -->
+                            <div class="novo-side-stack">
+                                <div class="novo-assessor-card">
+                                    <div class="novo-assessor-top">
+                                        <div class="user-avatar-circle">MC</div>
+                                        <div class="user-info-text">
+                                            <span class="user-name">Marina Costa</span>
+                                            <span class="user-role" style="color: #D8C8FF;">Assessora responsável</span>
+                                        </div>
+                                    </div>
+                                    <p class="novo-assessor-desc">
+                                        Após salvar, o cliente ficará disponível na Central de clientes para consulta de dados, patrimônio e carteira.
+                                    </p>
+                                    <span class="novo-status-pill">● Cadastro em análise</span>
                                 </div>
-                            </div>
-                            <div class="input-group">
-                                <label for="novoCelular">Celular</label>
-                                <div class="input-field-wrapper">
-                                    <input type="tel" id="novoCelular" placeholder="(11) 99999-9999">
+
+                                <div class="novo-card">
+                                    <h2 class="novo-card-title" style="margin-bottom: 14px;">Checklist de cadastro</h2>
+                                    <ul class="novo-checklist">
+                                        <li class="novo-check-item">
+                                            <input type="checkbox" id="checkIdentificacao" aria-label="Identificação">
+                                            <div>
+                                                <strong>Identificação</strong>
+                                                <span>Nome, CPF e data de nascimento</span>
+                                            </div>
+                                        </li>
+                                        <li class="novo-check-item">
+                                            <input type="checkbox" id="checkContato" aria-label="Contato">
+                                            <div>
+                                                <strong>Contato</strong>
+                                                <span>E-mail e celular atualizados</span>
+                                            </div>
+                                        </li>
+                                        <li class="novo-check-item">
+                                            <input type="checkbox" id="checkSuitability" aria-label="Suitability">
+                                            <div>
+                                                <strong>Suitability</strong>
+                                                <span>Perfil e objetivo de investimento</span>
+                                            </div>
+                                        </li>
+                                        <li class="novo-check-item">
+                                            <input type="checkbox" id="checkConsentimento" aria-label="Consentimento">
+                                            <div>
+                                                <strong>Consentimento</strong>
+                                                <span>Autorização para uso dos dados</span>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
+
+                                <p class="novo-privacy-note">
+                                    ✓ As informações são restritas à equipe autorizada da Aurora Wealth.
+                                </p>
                             </div>
-                            <div class="input-group">
-                                <label for="novoCpf">CPF</label>
-                                <div class="input-field-wrapper">
-                                    <input type="text" id="novoCpf" placeholder="000.000.000-00" inputmode="numeric">
-                                </div>
+                        </div>
+
+                        <!-- LGPD e ações -->
+                        <div class="novo-lgpd-row">
+                            <label class="checkbox-label" for="novoLgpd" style="max-width: 680px;">
+                                <input type="checkbox" id="novoLgpd">
+                                <span>Confirmo que os dados foram fornecidos pelo cliente e que há autorização para o tratamento das informações, conforme a LGPD.</span>
+                            </label>
+
+                            <div class="novo-actions">
+                                <button type="button" class="date-filter" data-screen="screen-clientes">Cancelar</button>
+                                <button type="submit" class="btn-pink-solid" id="btnSalvarCliente">Salvar cliente</button>
                             </div>
-                            <button type="button" class="btn-pink-solid" data-screen="screen-clientes">Salvar cliente</button>
-                        </form>
-                    </div>
+                        </div>
+
+                        <p class="novo-helper" style="margin-top: 10px;">* Campos obrigatórios</p>
+                    </form>
                 </div>
             </section>
         </main>
