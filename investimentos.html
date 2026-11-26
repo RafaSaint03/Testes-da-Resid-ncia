@@ -118,9 +118,28 @@
                             <button type="button" class="date-filter" data-screen="screen-invest-calc">
                                 Simuladores e calculadoras
                             </button>
-                            <div class="date-filter" title="Período selecionado">
-                                <img src="Icones/calendar.png" alt="" class="cal-icon">
-                                <span>01–30 set 2026</span>
+                            <div class="periodo-wrap">
+                                <button type="button" class="date-filter" id="btnPeriodo" aria-expanded="false" aria-controls="periodoPop">
+                                    <img src="Icones/calendar.png" alt="" class="cal-icon">
+                                    <span id="periodoLabel"></span>
+                                    <span>⌄</span>
+                                </button>
+
+                                <div class="periodo-pop" id="periodoPop" hidden>
+                                    <div class="periodo-presets">
+                                        <button type="button" data-preset="mes">Este mês</button>
+                                        <button type="button" data-preset="mesPassado">Mês passado</button>
+                                        <button type="button" data-preset="30d">Últimos 30 dias</button>
+                                        <button type="button" data-preset="90d">Últimos 90 dias</button>
+                                        <button type="button" data-preset="ano">Este ano</button>
+                                    </div>
+                                    <div class="periodo-custom">
+                                        <label>De <input type="date" id="dataInicio"></label>
+                                        <label>Até <input type="date" id="dataFim"></label>
+                                        <small class="periodo-erro" id="periodoErro" hidden>Data final menor que a inicial.</small>
+                                        <button type="button" class="btn-pink-solid" id="periodoAplicar">Aplicar</button>
+                                    </div>
+                                </div>
                             </div>
                             <button type="button" class="btn-pink-solid" data-exportar="investimentos">
                                 ↓ Exportar
@@ -235,7 +254,6 @@
                 </div>
             </section>
 
-            <!-- TELA 2: CALCULADORAS DE INVESTIMENTOS -->
             <section id="screen-invest-calc" class="app-screen">
                 <div class="content-wrapper">
                     <div class="inv-calc-header">
@@ -247,7 +265,7 @@
                     </div>
 
                     <div class="inv-calc-grid">
-                        <!-- CARD ESQUERDO: CALCULADORA DE RENDIMENTO E PRAZO -->
+                  
                         <div class="inv-calc-card">
                             <div class="inv-card-head">
                                 <div class="inv-card-icon pink">
@@ -338,7 +356,7 @@
                             </div>
                         </div>
 
-                        <!-- CARD DIREITO: CALCULADORA DE ROLAGEM DE POSICIONAMENTO -->
+                       
                         <div class="inv-calc-card">
                             <div class="inv-card-head">
                                 <div class="inv-card-icon lilac">
