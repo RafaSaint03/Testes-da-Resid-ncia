@@ -112,8 +112,28 @@
                         <p class="section-desc">Consulte compras, vendas e rolagens das carteiras.</p>
                     </div>
                     <div class="filter-export-group">
-                        <div class="date-filter">
-                            <span>📅 01–30 set 2026</span>
+                        <div class="periodo-wrap">
+                            <button type="button" class="date-filter" id="btnPeriodo" aria-expanded="false" aria-controls="periodoPop">
+                                <img src="Icones/calendar.png" alt="" class="cal-icon">
+                                <span id="periodoLabel"></span>
+                                <span>⌄</span>
+                            </button>
+
+                            <div class="periodo-pop" id="periodoPop" hidden>
+                                <div class="periodo-presets">
+                                    <button type="button" data-preset="mes">Este mês</button>
+                                    <button type="button" data-preset="mesPassado">Mês passado</button>
+                                    <button type="button" data-preset="30d">Últimos 30 dias</button>
+                                    <button type="button" data-preset="90d">Últimos 90 dias</button>
+                                    <button type="button" data-preset="ano">Este ano</button>
+                                </div>
+                                <div class="periodo-custom">
+                                    <label>De <input type="date" id="dataInicio"></label>
+                                    <label>Até <input type="date" id="dataFim"></label>
+                                    <small class="periodo-erro" id="periodoErro" hidden>Data final menor que a inicial.</small>
+                                    <button type="button" class="btn-pink-solid" id="periodoAplicar">Aplicar</button>
+                                </div>
+                            </div>
                         </div>
                         <button id="btnExportarMovimentacoes" class="btn-pink-solid">
                             <span>⬇</span> Exportar
@@ -191,3 +211,5 @@
 </body>
 
 </html>
+
+Quando estiver pronto para o `investimentos_3.html`, é só avisar que eu envio em seguida!
