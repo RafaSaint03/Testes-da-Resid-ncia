@@ -38,7 +38,7 @@
 
                 <span class="sidebar-section-title">NAVEGAÇÃO</span>
                 <nav class="sidebar-nav">
-                    <a href="geral.html" class="nav-item active" title="Visão geral">
+                    <a href="geral.html" class="nav-item active" title="Visão geral" aria-current="page">
                         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
                         <span>Visão geral</span>
                     </a>
@@ -112,8 +112,30 @@
                         <p class="section-desc">Acompanhe a saúde e a rentabilidade consolidada dos investimentos.</p>
                     </div>
                     <div class="filter-export-group">
-                        <div class="date-filter">
-                            <span>📅 01–30 set 2026</span>
+                        <div class="periodo-wrap">
+                            <button type="button" class="date-filter" id="btnPeriodo" aria-expanded="false" aria-haspopup="true">
+                                <img src="Icones/Vector.png" alt="" class="cal-icon">
+                                <span id="periodoLabel"></span>
+                                <span class="arrow-down">⌄</span>
+                            </button>
+
+                            <div class="periodo-pop" id="periodoPop" hidden>
+                                <span class="periodo-title">PERÍODO</span>
+                                <div class="periodo-presets">
+                                    <button type="button" data-preset="mes">Este mês</button>
+                                    <button type="button" data-preset="mesPassado">Mês passado</button>
+                                    <button type="button" data-preset="30d">Últimos 30 dias</button>
+                                    <button type="button" data-preset="90d">Últimos 90 dias</button>
+                                    <button type="button" data-preset="ano">Este ano</button>
+                                </div>
+                                <span class="periodo-title">PERSONALIZADO</span>
+                                <div class="periodo-custom">
+                                    <label>De <input type="date" id="dataInicio"></label>
+                                    <label>Até <input type="date" id="dataFim"></label>
+                                </div>
+                                <p class="periodo-erro" id="periodoErro" hidden>A data final precisa ser depois da inicial.</p>
+                                <button type="button" class="periodo-aplicar" id="periodoAplicar">Aplicar</button>
+                            </div>
                         </div>
                         <button id="btnExportar" class="btn-pink-solid">
                             <span>⬇</span> Exportar
