@@ -238,9 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputFim = $('dataFim');
         const erroPeriodo = $('periodoErro');
 
+        const hojeCarteira = new Date();
+        hojeCarteira.setHours(0, 0, 0, 0);
+
         let statusAtual = 'todas';
-        let inicio = new Date(2026, 8, 1);
-        let fim = new Date(2026, 8, 30);
+        let inicio = new Date(hojeCarteira);
+        let fim = new Date(hojeCarteira);
 
         const pad = (n) => String(n).padStart(2, '0');
         const moeda = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
@@ -253,6 +256,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const paraISO = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
         function rotuloPeriodo(i, f) {
+            if (
+                i.getFullYear() === f.getFullYear() &&
+                i.getMonth() === f.getMonth() &&
+                i.getDate() === f.getDate()
+            ) {
+                return `${pad(i.getDate())} ${meses[i.getMonth()]} ${i.getFullYear()}`;
+            }
             if (i.getFullYear() === f.getFullYear() && i.getMonth() === f.getMonth()) {
                 return `${pad(i.getDate())}–${pad(f.getDate())} ${meses[f.getMonth()]} ${f.getFullYear()}`;
             }
@@ -398,6 +408,151 @@ document.addEventListener('DOMContentLoaded', () => {
         labelPeriodo.textContent = rotuloPeriodo(inicio, fim);
         render();
     }
+
+    // =========================================================
+    // SELETOR DE PERÍODO GLOBAL (atualiza todo dia + outras páginas)
+    // =========================================================
+    function iniciarSeletorPeriodo(aoMudar) {
+        const btnPeriodoGlobal = $('btnPeriodo');
+        const popPeriodoGlobal = $('periodoPop');
+        const labelPeriodoGlobal = $('periodoLabel');
+        const inputInicioGlobal = $('dataInicio');
+        const inputFimGlobal = $('dataFim');
+        const erroPeriodoGlobal = $('periodoErro');
+        const btnAplicarGlobal = $('periodoAplicar');
+
+        if ($('tabelaClientes') || !btnPeriodoGlobal || !popPeriodoGlobal) return null;
+
+        const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+        const pad = (n) => String(n).padStart(2, '0');
+        const paraData = (iso) => {
+            const [a, m, d] = iso.split('-').map(Number);
+            return new Date(a, m - 1, d);
+        };
+        const paraISO = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
+        function obterHoje() {
+            const d = new Date();
+            d.setHours(0, 0, 0, 0);
+            return d;
+        }
+
+        function mesmoDia(a, b) {
+            return a.getFullYear() === b.getFullYear() &&
+                a.getMonth() === b.getMonth() &&
+                a.getDate() === b.getDate();
+        }
+
+        let hoje = obterHoje();
+        let inicio = new Date(hoje);
+        let fim = new Date(hoje);
+        let modoDataHoje = true;
+        let timerMeiaNoite = null;
+
+        function rotuloPeriodo(i, f) {
+            if (mesmoDia(i, f)) {
+                return `${pad(i.getDate())} ${meses[i.getMonth()]} ${i.getFullYear()}`;
+            }
+            if (i.getFullYear() === f.getFullYear() && i.getMonth() === f.getMonth()) {
+                return `${pad(i.getDate())}–${pad(f.getDate())} ${meses[f.getMonth()]} ${f.getFullYear()}`;
+            }
+            return `${pad(i.getDate())} ${meses[i.getMonth()]} ${i.getFullYear()} – ${pad(f.getDate())} ${meses[f.getMonth()]} ${f.getFullYear()}`;
+        }
+
+        function fechar() {
+            popPeriodoGlobal.hidden = true;
+            btnPeriodoGlobal.setAttribute('aria-expanded', 'false');
+        }
+
+        function aplicar(i, f, manterHoje = false) {
+            inicio = new Date(i);
+            fim = new Date(f);
+            modoDataHoje = manterHoje;
+
+            if (labelPeriodoGlobal) labelPeriodoGlobal.textContent = rotuloPeriodo(inicio, fim);
+            if (inputInicioGlobal) inputInicioGlobal.value = paraISO(inicio);
+            if (inputFimGlobal) inputFimGlobal.value = paraISO(fim);
+            if (erroPeriodoGlobal) erroPeriodoGlobal.hidden = true;
+
+            fechar();
+            if (typeof aoMudar === 'function') {
+                aoMudar({ inicio, fim, rotulo: rotuloPeriodo(inicio, fim) });
+            }
+        }
+
+        const presets = {
+            mes: (h) => [new Date(h.getFullYear(), h.getMonth(), 1), new Date(h.getFullYear(), h.getMonth() + 1, 0)],
+            mesPassado: (h) => [new Date(h.getFullYear(), h.getMonth() - 1, 1), new Date(h.getFullYear(), h.getMonth(), 0)],
+            '30d': (h) => [new Date(h.getFullYear(), h.getMonth(), h.getDate() - 29), h],
+            '90d': (h) => [new Date(h.getFullYear(), h.getMonth(), h.getDate() - 89), h],
+            ano: (h) => [new Date(h.getFullYear(), 0, 1), new Date(h.getFullYear(), 11, 31)]
+        };
+
+        btnPeriodoGlobal.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const abrir = popPeriodoGlobal.hidden;
+            popPeriodoGlobal.hidden = !abrir;
+            btnPeriodoGlobal.setAttribute('aria-expanded', String(abrir));
+        });
+
+        popPeriodoGlobal.addEventListener('click', (e) => e.stopPropagation());
+
+        popPeriodoGlobal.querySelectorAll('[data-preset]').forEach((b) => {
+            b.addEventListener('click', () => {
+                const ref = obterHoje();
+                const [i, f] = presets[b.dataset.preset](ref);
+                aplicar(i, f, false);
+            });
+        });
+
+        if (btnAplicarGlobal) {
+            btnAplicarGlobal.addEventListener('click', () => {
+                if (!inputInicioGlobal || !inputFimGlobal || !inputInicioGlobal.value || !inputFimGlobal.value) return;
+                const i = paraData(inputInicioGlobal.value);
+                const f = paraData(inputFimGlobal.value);
+                if (f < i) {
+                    if (erroPeriodoGlobal) erroPeriodoGlobal.hidden = false;
+                    return;
+                }
+                const ehHoje = mesmoDia(i, f) && mesmoDia(i, obterHoje());
+                aplicar(i, f, ehHoje);
+            });
+        }
+
+        document.addEventListener('click', fechar);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') fechar();
+        });
+
+        function agendarAtualizacaoDiaria() {
+            clearTimeout(timerMeiaNoite);
+            const agora = new Date();
+            const proximaVirada = new Date(
+                agora.getFullYear(),
+                agora.getMonth(),
+                agora.getDate() + 1,
+                0, 0, 1, 0
+            );
+
+            timerMeiaNoite = setTimeout(() => {
+                const novoHoje = obterHoje();
+                if (!mesmoDia(novoHoje, hoje)) {
+                    hoje = novoHoje;
+                    if (modoDataHoje) {
+                        aplicar(hoje, hoje, true);
+                    }
+                }
+                agendarAtualizacaoDiaria();
+            }, Math.max(1000, proximaVirada - agora));
+        }
+
+        aplicar(inicio, fim, true);
+        agendarAtualizacaoDiaria();
+
+        return { getPeriodo: () => ({ inicio, fim, rotulo: rotuloPeriodo(inicio, fim) }) };
+    }
+
+    iniciarSeletorPeriodo();
 
     // =========================================================
     // 3. CENTRAL DE CLIENTES (ex-script inline de clientes.html)
@@ -1002,4 +1157,222 @@ document.addEventListener('DOMContentLoaded', () => {
             baixarCSV(slug(titulo), linhas);
         });
     });
+
+    // =========================================================
+    // 8. INVESTIMENTOS: ATIVOS, FILTROS, PAGINAÇÃO E CALCULADORAS
+    // =========================================================
+    const tbodyInvest = $('tabelaAtivosInvest');
+    if (tbodyInvest) {
+        const TOTAL_ATIVOS = 32;
+        const POR_PAGINA_INV = 8;
+        const PAGINAS_INV = Math.ceil(TOTAL_ATIVOS / POR_PAGINA_INV);
+
+        const ativosBase = [
+            { nome: 'Tesouro IPCA+ 2035', sub: 'Tesouro Direto · IPCA + 6,10% a.a.', cat: 'Renda fixa', valor: 840200, rent: 8.42, liquidez: 'D+1', cor: 't-pink', icone: 'bank' },
+            { nome: 'Fundo Aurora Macro', sub: 'Aurora Asset · Multimercado', cat: 'Fundos', valor: 524900, rent: 12.18, liquidez: 'D+30', cor: 't-lilac', icone: 'layers' },
+            { nome: 'PETR4', sub: 'Petrobras · Preferencial', cat: 'Ações', valor: 318400, rent: 4.76, liquidez: 'D+2', cor: 't-pink', icone: 'trend' },
+            { nome: 'CDB Banco Prisma', sub: 'Banco Prisma · 112% do CDI', cat: 'Renda fixa', valor: 286000, rent: 6.91, liquidez: 'Diária', cor: 't-pink', icone: 'bank' },
+            { nome: 'Tesouro Prefixado 2029', sub: 'Tesouro Direto · Prefixado', cat: 'Renda fixa', valor: 245600, rent: 7.24, liquidez: 'D+1', cor: 't-pink', icone: 'bank' },
+            { nome: 'Fundo Horizonte Crédito', sub: 'Horizonte Asset · Crédito privado', cat: 'Fundos', valor: 218300, rent: 9.15, liquidez: 'D+15', cor: 't-lilac', icone: 'layers' },
+            { nome: 'VALE3', sub: 'Vale · Ordinária', cat: 'Ações', valor: 186400, rent: -1.28, liquidez: 'D+2', cor: 't-pink', icone: 'trend' },
+            { nome: 'ITUB4', sub: 'Itaú Unibanco · Preferencial', cat: 'Ações', valor: 148700, rent: 6.32, liquidez: 'D+2', cor: 't-pink', icone: 'trend' }
+        ];
+
+        const iconesSvg = {
+            bank: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>`,
+            layers: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+            trend: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>`
+        };
+
+        const buscaInput = $('buscaAtivo');
+        const liquidezSelect = $('filtroLiquidez');
+        const catTabs = document.querySelectorAll('#categoriaTabs .tab');
+        const vazioBox = $('vazioAtivosInvest');
+        const paginasBox = $('investPaginas');
+        const btnAnt = $('investAnterior');
+        const btnProx = $('investProxima');
+
+        let catAtual = 'todos';
+        let pagAtual = 1;
+
+        const moedaInteira = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+        const norm = (t) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+        function formatarRent(r) {
+            const sinal = r >= 0 ? '+' : '−';
+            const abs = Math.abs(r).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            return `${sinal}${abs}%`;
+        }
+
+        function filtrarAtivos() {
+            const termo = norm(buscaInput.value.trim());
+            const liq = liquidezSelect.value;
+
+            return ativosBase.filter((a) =>
+                (catAtual === 'todos' || a.cat === catAtual) &&
+                (liq === 'todas' || a.liquidez === liq) &&
+                (!termo || norm(a.nome).includes(termo) || norm(a.sub).includes(termo))
+            );
+        }
+
+        function renderTabelaInvest() {
+            const lista = filtrarAtivos();
+
+            tbodyInvest.innerHTML = lista.map((a) => `
+                <tr>
+                    <td>
+                        <div class="asset-cell">
+                            <span class="asset-icon ${a.cor}">${iconesSvg[a.icone]}</span>
+                            <div>
+                                <strong>${a.nome}</strong>
+                                <small>${a.sub}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${a.cat}</td>
+                    <td class="mov-value">${moedaInteira(a.valor)}</td>
+                    <td class="${a.rent >= 0 ? 'rent-positive' : 'rent-negative'}">${formatarRent(a.rent)}</td>
+                    <td>${a.liquidez}</td>
+                    <td><span class="inv-badge-carteira">Em carteira</span></td>
+                </tr>
+            `).join('');
+
+            vazioBox.hidden = lista.length > 0;
+            const ini = (pagAtual - 1) * POR_PAGINA_INV + 1;
+            const fim = Math.min(pagAtual * POR_PAGINA_INV, TOTAL_ATIVOS);
+            $('investIntervalo').textContent = lista.length === ativosBase.length
+                ? `Exibindo ${ini}–${fim} de ${TOTAL_ATIVOS} ativos`
+                : `Exibindo ${lista.length} ativo(s) filtrado(s)`;
+        }
+
+        function renderPaginacaoInvest() {
+            const itens = [1, 2];
+            paginasBox.innerHTML = itens.map((p) => `
+                <button type="button" class="mov-page ${p === pagAtual ? 'active' : ''}" data-inv-pag="${p}">${p}</button>
+            `).join('');
+            btnAnt.disabled = pagAtual === 1;
+            btnProx.disabled = pagAtual === PAGINAS_INV;
+        }
+
+        catTabs.forEach((t) => {
+            t.addEventListener('click', () => {
+                catTabs.forEach((b) => b.classList.remove('active'));
+                t.classList.add('active');
+                catAtual = t.dataset.cat;
+                renderTabelaInvest();
+            });
+        });
+
+        buscaInput.addEventListener('input', renderTabelaInvest);
+        liquidezSelect.addEventListener('change', renderTabelaInvest);
+
+        paginasBox.addEventListener('click', (e) => {
+            const b = e.target.closest('[data-inv-pag]');
+            if (!b) return;
+            pagAtual = Number(b.dataset.invPag);
+            renderTabelaInvest();
+            renderPaginacaoInvest();
+        });
+
+        btnAnt.addEventListener('click', () => {
+            if (pagAtual > 1) {
+                pagAtual--;
+                renderTabelaInvest();
+                renderPaginacaoInvest();
+            }
+        });
+
+        btnProx.addEventListener('click', () => {
+            if (pagAtual < PAGINAS_INV) {
+                pagAtual++;
+                renderTabelaInvest();
+                renderPaginacaoInvest();
+            }
+        });
+
+        renderTabelaInvest();
+        renderPaginacaoInvest();
+
+        // --- CALCULADORA 1: RENDIMENTO E PRAZO ---
+        const parseMoedaBR = (str) => {
+            const limpo = String(str || '').replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.');
+            const n = parseFloat(limpo);
+            return Number.isFinite(n) ? n : 0;
+        };
+
+        const formatarBRL = (val) => val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        let unidadePrazo = 'meses';
+        const inputCap = $('calcCapital');
+        const inputAporte = $('calcAporte');
+        const inputTaxa = $('calcTaxa');
+        const inputPrazo = $('calcPrazo');
+
+        function atualizarRendimento() {
+            const capital = Math.max(0, parseMoedaBR(inputCap.value));
+            const aporte = Math.max(0, parseMoedaBR(inputAporte.value));
+            const taxaAnual = Math.max(0, parseMoedaBR(inputTaxa.value)) / 100;
+            const qtd = Math.max(0, parseInt(inputPrazo.value, 10) || 0);
+            const meses = unidadePrazo === 'anos' ? qtd * 12 : qtd;
+
+            const taxaMensal = Math.pow(1 + taxaAnual, 1 / 12) - 1;
+            let montante = capital;
+            for (let m = 0; m < meses; m++) {
+                montante = montante * (1 + taxaMensal) + aporte;
+            }
+
+            const totalInvestido = capital + aporte * meses;
+            const juros = Math.max(0, montante - totalInvestido);
+
+            $('resAcumulado').textContent = formatarBRL(montante);
+            $('resResumo').textContent = juros > 0
+                ? `Prazo de ${meses} meses · +${formatarBRL(juros)} em rendimentos`
+                : `Prazo de ${meses} meses · sem rendimentos no período`;
+
+            // Atualiza curva do SVG conforme rendimento
+            const yFinal = meses === 0 || montante === 0 ? 102 : Math.max(14, Math.round(102 - Math.min(86, (juros / Math.max(montante, 1)) * 140 + 22)));
+            const yMeio = Math.round((105 + yFinal) / 2 + 8);
+            $('svgLinhaProj').setAttribute('d', `M 4 105 Q 140 ${yMeio} 254 ${yFinal}`);
+            $('svgAreaProj').setAttribute('d', `M 4 105 Q 140 ${yMeio} 254 ${yFinal} L 254 105 Z`);
+            $('svgPontoFinal').setAttribute('cy', String(yFinal));
+        }
+
+        document.querySelectorAll('#prazoUnidadeToggle button').forEach((btnUnit) => {
+            btnUnit.addEventListener('click', () => {
+                document.querySelectorAll('#prazoUnidadeToggle button').forEach((b) => b.classList.remove('active'));
+                btnUnit.classList.add('active');
+                unidadePrazo = btnUnit.dataset.unit;
+                $('prazoSufixo').textContent = unidadePrazo;
+                atualizarRendimento();
+            });
+        });
+
+        [inputCap, inputAporte, inputTaxa, inputPrazo].forEach((inp) => {
+            inp.addEventListener('input', atualizarRendimento);
+        });
+        atualizarRendimento();
+
+        // --- CALCULADORA 2: ROLAGEM DE POSICIONAMENTO ---
+        function atualizarRolagem() {
+            const pAtual = parseMoedaBR($('rolPrecoAtual').value);
+            const pAlvo = parseMoedaBR($('rolPrecoAlvo').value);
+            const aporte = Math.max(0, parseMoedaBR($('rolAporte').value));
+            const unidades = 1000;
+
+            const retornoPct = pAtual > 0 ? ((pAlvo - pAtual) / pAtual) * 100 : 0;
+            const novoMedio = pAtual + (aporte / unidades);
+
+            const sinal = retornoPct >= 0 ? '+' : '−';
+            const elRet = $('rolRetorno');
+            elRet.textContent = `${sinal}${Math.abs(retornoPct).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`;
+            elRet.className = retornoPct >= 0 ? 'rent-positive' : 'rent-negative';
+            $('rolPrecoMedio').textContent = formatarBRL(novoMedio);
+        }
+
+        ['rolPrecoAtual', 'rolPrecoAlvo', 'rolAporte'].forEach((id) => {
+            $(id).addEventListener('input', atualizarRolagem);
+        });
+        $('btnCalcularRolagem').addEventListener('click', atualizarRolagem);
+        atualizarRolagem();
+    }
 });
