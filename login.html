@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS - Acesso Seguro</title>
+    <title>Acesso Seguro</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bonitinho.css">
 </head>
@@ -15,16 +15,16 @@
 
         <div class="login-left-pane">
             <div class="login-left-content">
-                <h1 class="login-title">Acompanhe seu patrimônio e tome decisões seguras, no seu ritmo.</h1>
+                <h1 class="login-title" data-intro>Acompanhe seu patrimônio e tome decisões seguras, no seu ritmo.</h1>
 
                 <div class="login-card-preview">
                     <div class="login-card-top">
-                        <span class="badge-growth-soft">+22,6%</span>
-                        <span class="login-card-sub">evolução média de metas em 24 meses</span>
+                        <span class="badge-growth-soft" data-intro data-intro-delay="240">+22,6%</span>
+                        <span class="login-card-sub" data-intro data-intro-delay="480">evolução média de metas em 24 meses</span>
                     </div>
                     <div class="login-card-quote">
-                        <p>"Finalmente conseguimos enxergar nossos planos no mesmo lugar — e investir sem ansiedade."</p>
-                        <small class="client-name">ANA E RICARDO - CLIENTES DESDE 2022</small>
+                        <p data-intro data-intro-delay="720">"Finalmente conseguimos enxergar nossos planos no mesmo lugar — e investir sem ansiedade."</p>
+                        <small class="client-name" data-intro data-intro-delay="960">ANA E RICARDO - CLIENTES DESDE 2022</small>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,12 @@
 
         <div class="login-right-pane">
             <div class="login-form-header">
-                <span class="access-type">ACESSO SEGURO</span>
+                <div class="auth-header-brand">
+                    <a href="index.html" class="auth-logo" aria-label="Página inicial da NEXUS">
+                        <img src="assets/logo-s-fundo.png" alt="" class="logo-badge">
+                    </a>
+                    <span class="access-type">ACESSO SEGURO</span>
+                </div>
                 <a href="ajuda.html" class="help-link">
                     <img src="Icones/duvida.png" alt="Dúvida" class="icon-help">
                     Precisa de ajuda?
@@ -41,8 +46,8 @@
 
             <div class="login-form-wrapper">
                 <div class="form-intro">
-                    <h2>Boas-vindas de volta.</h2>
-                    <p>Acesse sua conta para acompanhar seus investimentos.</p>
+                    <h2 data-intro>Boas-vindas de volta.</h2>
+                    <p data-intro data-intro-delay="180">Acesse sua conta para acompanhar seus investimentos.</p>
                 </div>
 
                 <form id="formLogin" class="auth-form" novalidate>
@@ -76,11 +81,11 @@
                     <button type="submit" id="btnEntrar" class="btn-dark-submit">Entrar na minha conta <span class="arrow">→</span></button>
                 </form>
 
-                <div class="register-redirect">
+                <div class="register-redirect" data-intro>
                     <p>Ainda não investe com a NEXUS? <a href="cadastro.html" class="pink-link">Crie sua conta</a></p>
                 </div>
 
-                <div class="security-alert-box">
+                <div class="security-alert-box" data-intro data-intro-delay="180">
                     <div class="alert-icon">
                         <img src="Icones/shield-check.png" alt="Segurança" class="icon-shield">
                     </div>
@@ -100,6 +105,7 @@
     </div>
 
     <script src="funcionalidades.js"></script>
+    <script src="animacoes.js"></script>
 </body>
 
 </html>

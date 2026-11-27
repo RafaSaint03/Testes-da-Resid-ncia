@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações | Nexus</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bonitinho.css">
+</head>
+
+<body class="dashboard-body config-page">
+    <div class="app-container" id="appContainer">
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-logo">
+                    <div class="logo-inner">
+                        <img src="assets/logo-s-fundo.png" alt="" class="logo-badge">
+                        <div class="logo-text-group">
+                            <span class="logo-title">NEXUS</span>
+                        </div>
+                    </div>
+                    <button class="sidebar-toggle-btn" id="sidebarToggle" type="button" onclick="toggleSidebar()"
+                        aria-label="Recolher menu" aria-expanded="true" title="Recolher/expandir menu">☰</button>
+                </div>
+
+                <div class="workspace-selector-box">
+                    <span class="sidebar-section-title">CONTA ATIVA</span>
+                    <div class="account-selector-sidebar">
+                        <span class="acc-badge">AW</span>
+                        <div class="acc-text">
+                            <span class="acc-name">Aurora Wealth</span>
+                            <span class="acc-type">Instituição vinculada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="sidebar-section-title">NAVEGAÇÃO</span>
+                <nav class="sidebar-nav" aria-label="Navegação do sistema">
+                    <a href="geral.html" class="nav-item" title="Visão geral">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                        <span>Visão geral</span>
+                    </a>
+                    <a href="clientes.html" class="nav-item" title="Clientes">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>Clientes</span>
+                    </a>
+                    <a href="carteiras.html" class="nav-item" title="Carteiras">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+                        <span>Carteiras</span>
+                    </a>
+                    <a href="movimentacoes.html" class="nav-item" title="Movimentações">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+                        <span>Movimentações</span>
+                    </a>
+                    <a href="investimentos.html" class="nav-item" title="Investimentos">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                        <span>Investimentos</span>
+                    </a>
+                    <a href="relatorios.html" class="nav-item" title="Relatórios">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 18v-2"/><path d="M12 18v-6"/><path d="M16 18v-4"/></svg>
+                        <span>Relatórios</span>
+                    </a>
+                    <a href="config-gerente.html" class="nav-item active" title="Configurações" aria-current="page">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.33 1.82V22a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8.6 20a1.65 1.65 0 0 0-1.82-.33l-.08.03a2 2 0 1 1-1.42-3.42l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-.6-1 1.65 1.65 0 0 0-1.82-.33H2a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4 8.6a1.65 1.65 0 0 0 .33-1.82l-.03-.08A2 2 0 1 1 7.72 5.28l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-.6 1.65 1.65 0 0 0 .33-1.82V2a2 2 0 1 1 4 0v.09A1.65 1.65 0 0 0 15.4 4a1.65 1.65 0 0 0 1.82.33l.08-.03a2 2 0 1 1 1.42 3.42l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.38.35.73.6 1a1.65 1.65 0 0 0 1.82.33H22a2 2 0 1 1 0 4h-.09A1.65 1.65 0 0 0 20 15.4Z"/></svg>
+                        <span>Configurações</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div>
+                <div class="sidebar-footer-card">
+                    <div class="plan-info">
+                        <span class="plan-name">Plano Pro</span>
+                        <span class="badge-ativo">ATIVO</span>
+                    </div>
+                    <p class="plan-desc">8 de 12 carteiras acompanhadas</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 66%;"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-topbar">
+                <div class="breadcrumb">
+                    <span>Investimentos</span> / <span class="current-crumb">Configurações</span>
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-btn" type="button" title="Ajuda" onclick="window.location.href='ajuda.html'">
+                        <img src="Icones/ask.png" alt="Ajuda" class="icon-help">
+                    </button>
+                    <button class="icon-btn" type="button" title="Notificações">
+                        <img src="Icones/notifica.png" alt="Notificação" class="bell-icon">
+                    </button>
+                    <div class="user-profile-topbar">
+                        <div class="user-avatar-circle">MC</div>
+                        <div class="user-info-text">
+                            <span class="user-name">Marina Costa</span>
+                            <span class="user-role">Gerente</span>
+                        </div>
+                        <span class="settings-dots" title="Sair" style="cursor:pointer" onclick="window.location.href='index.html'">
+                            <img src="Icones/trespontinhos.png" alt="Sair" class="icon-dots">
+                        </span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-wrapper page-container">
+                <header class="page-title-row page-header">
+                <div>
+                    <h1>Configurações</h1>
+                    <p>Gerencie seus dados de acesso, as informações da instituição Aurora e suas preferências de acessibilidade</p>
+                </div>
+
+                <button class="primary-button" type="button">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/>
+                        <polyline points="17 21 17 13 7 13 7 21"/>
+                        <polyline points="7 3 7 8 15 8"/>
+                    </svg>
+                    Salvar alterações
+                </button>
+            </header>
+
+            <div class="settings-sections">
+                <section class="settings-section" aria-labelledby="dados-gerente">
+                    <div class="section-heading">
+                        <h2 id="dados-gerente">Dados do Gerente</h2>
+                        <p>Suas informações pessoais, credenciais de acesso e segurança da sua conta no Nexus.</p>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="profile-avatar-row">
+                            <div class="profile-avatar-wrap">
+                                <div class="profile-avatar">MC</div>
+                                <span class="verified-badge" aria-label="Perfil verificado" title="Perfil verificado">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <button class="change-avatar-button" type="button">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/>
+                                    <circle cx="12" cy="13" r="4"/>
+                                </svg>
+                                Alterar imagem
+                            </button>
+                        </div>
+
+                        <div class="fields-grid">
+                            <label class="field">
+                                <span class="field-label">Nome Completo</span>
+                                <span class="input-wrap">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                    <input type="text" value="Marina Costa" autocomplete="name">
+                                </span>
+                            </label>
+
+                            <label class="field">
+                                <span class="field-label">E-mail de Acesso</span>
+                                <span class="input-wrap">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="3" y="5" width="18" height="14" rx="2"/>
+                                        <polyline points="3 7 12 13 21 7"/>
+                                    </svg>
+                                    <input type="email" value="marina.costa@aurorawealth.com.br" autocomplete="email">
+                                </span>
+                            </label>
+
+                            <label class="field">
+                                <span class="field-label">Função no Sistema</span>
+                                <span class="input-wrap">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+                                        <circle cx="12" cy="10" r="2"/>
+                                        <path d="M12 12v4"/>
+                                    </svg>
+                                    <input type="text" value="Gerente • Instituição Aurora" readonly>
+                                </span>
+                            </label>
+
+                            <label class="field">
+                                <span class="field-label">Nova Senha</span>
+                                <span class="input-wrap">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="3" y="11" width="18" height="11" rx="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                    <input type="password" placeholder="Digite uma nova senha" autocomplete="new-password">
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="settings-section" aria-labelledby="instituicao-vinculada">
+                    <div class="section-heading">
+                        <h2 id="instituicao-vinculada">Instituição Vinculada</h2>
+                        <p>Dados cadastrais e operacionais da instituição Aurora gerenciada por você dentro da plataforma Nexus.</p>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="institution-header">
+                            <div class="institution-brand">
+                                <div class="institution-avatar">AW</div>
+                                <div>
+                                    <strong>Aurora Wealth</strong>
+                                    <span>Plataforma institucional Nexus</span>
+                                </div>
+                            </div>
+
+                            <span class="status-badge">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                Instituição Ativa
+                            </span>
+                        </div>
+
+                        <div class="fields-grid">
+                            <label class="field">
+                                <span class="field-label">Nome da Instituição</span>
+                                <span class="input-wrap">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                        <path d="M9 22v-4h6v4"/>
+                                        <path d="M8 6h2M14 6h2M8 10h2M14 10h2M8 14h2M14 14h2"/>
+                                    </svg>
+                                    <input type="text" value="Aurora Wealth">
+                                </span>
+                            </label>
+
+                            <label class="field">
+                                <span class="field-label">CNPJ</span>
+                                <span class="input-wrap">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                        <path d="M8 13h8M8 17h6"/>
+                                    </svg>
+                                    <input type="text" value="42.819.305/0001-90" inputmode="numeric">
+                                </span>
+                            </label>
+
+                            <label class="field">
+                                <span class="field-label">Unidade / Regional</span>
+                                <span class="input-wrap">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+                                        <circle cx="12" cy="10" r="2.5"/>
+                                    </svg>
+                                    <input type="text" value="Unidade Recife - PE">
+                                </span>
+                            </label>
+
+                            <label class="field">
+                                <span class="field-label">Vínculo Contratual</span>
+                                <span class="input-wrap">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="3" y="7" width="18" height="13" rx="2"/>
+                                        <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                        <path d="M3 12h18M10 12v2h4v-2"/>
+                                    </svg>
+                                    <input type="text" value="Conta Empresarial • Gestão Institucional" readonly>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="settings-section" aria-labelledby="acessibilidade">
+                    <div class="section-heading">
+                        <h2 id="acessibilidade">Acessibilidade</h2>
+                        <p>Personalize a acessibilidade e as animações em todas as páginas. Suas preferências ficam salvas neste navegador.</p>
+                    </div>
+
+                    <div class="section-content accessibility-content">
+                        <div class="toggle-list">
+                            <div class="toggle-row">
+                                <div class="toggle-copy">
+                                    <strong>Contorno maior nos botões e campos</strong>
+                                    <p>Aumenta a espessura das bordas de botões, inputs e áreas clicáveis para facilitar a visualização e o clique.</p>
+                                </div>
+
+                                <label class="toggle" for="toggle-borders">
+                                    <input type="checkbox" id="toggle-borders">
+                                    <span class="toggle-track" aria-hidden="true">
+                                        <span class="toggle-thumb"></span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-row">
+                                <div class="toggle-copy">
+                                    <strong>Ícones e elementos com alto contraste</strong>
+                                    <p>Reforça o contraste dos ícones, textos secundários e divisores da tela.</p>
+                                </div>
+
+                                <label class="toggle" for="toggle-contrast">
+                                    <input type="checkbox" id="toggle-contrast">
+                                    <span class="toggle-track" aria-hidden="true">
+                                        <span class="toggle-thumb"></span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="toggle-row">
+                                <div class="toggle-copy">
+                                    <strong>Desativar animações</strong>
+                                    <p>Desativa animações e transições da interface em todas as páginas.</p>
+                                </div>
+
+                                <label class="toggle" for="toggle-animations">
+                                    <input type="checkbox" id="toggle-animations">
+                                    <span class="toggle-track" aria-hidden="true">
+                                        <span class="toggle-thumb"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <article class="talkback-card">
+                            <div class="talkback-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                    <path d="M9 18h6"/>
+                                    <path d="M12 6a4 4 0 0 1 4 4"/>
+                                    <path d="M12 9a1 1 0 0 1 1 1"/>
+                                </svg>
+                            </div>
+
+                            <div class="talkback-content">
+                                <h3>Tutorial Oficial: Como ativar e usar o TalkBack</h3>
+
+                                <ol class="talkback-steps">
+                                    <li>
+                                        <strong>Atalho rápido pelas teclas:</strong>
+                                        Pressione e segure simultaneamente os dois botões de volume por 3 segundos.
+                                    </li>
+                                    <li>
+                                        <strong>Ativação manual:</strong>
+                                        Abra <em>Configurações &gt; Acessibilidade &gt; TalkBack</em> no dispositivo e ative a chave <strong>"Usar o TalkBack"</strong>.
+                                    </li>
+                                    <li>
+                                        <strong>Gestos de navegação:</strong>
+                                        Deslize o dedo para a direita ou esquerda para percorrer os campos e botões; dê <strong>dois toques</strong> na tela para selecionar ou confirmar.
+                                    </li>
+                                </ol>
+
+                                <a class="external-link" href="https://support.google.com/accessibility/android/answer/6007100" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                    Abrir tutorial oficial do TalkBack (Google)
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <script src="funcionalidades.js"></script>
+    <script src="animacoes.js"></script>
+</body>
+</html>

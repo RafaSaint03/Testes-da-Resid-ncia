@@ -1,3 +1,56 @@
+// PREFERÊNCIAS GLOBAIS DE ACESSIBILIDADE
+(function inicializarPreferenciasAcessibilidade() {
+    const preferencias = [
+        {
+            id: 'toggle-borders',
+            chave: 'nexusA11yThickBorders',
+            classe: 'a11y-thick-borders'
+        },
+        {
+            id: 'toggle-contrast',
+            chave: 'nexusA11yHighContrast',
+            classe: 'a11y-high-contrast'
+        },
+        {
+            id: 'toggle-animations',
+            chave: 'nexusA11yReducedMotion',
+            classe: 'a11y-reduced-motion'
+        }
+    ];
+
+    function lerPreferencia(chave) {
+        try {
+            return localStorage.getItem(chave) === 'true';
+        } catch (erro) {
+            console.error('Não foi possível carregar as preferências de acessibilidade.', erro);
+            return false;
+        }
+    }
+
+    function salvarPreferencia(chave, ativada) {
+        try {
+            localStorage.setItem(chave, String(ativada));
+        } catch (erro) {
+            console.error('Não foi possível salvar as preferências de acessibilidade.', erro);
+        }
+    }
+
+    preferencias.forEach(preferencia => {
+        const controle = document.getElementById(preferencia.id);
+        const ativada = lerPreferencia(preferencia.chave);
+
+        document.body.classList.toggle(preferencia.classe, ativada);
+        if (!controle) return;
+
+        controle.checked = ativada;
+        controle.addEventListener('change', () => {
+            const novoEstado = controle.checked;
+            document.body.classList.toggle(preferencia.classe, novoEstado);
+            salvarPreferencia(preferencia.chave, novoEstado);
+        });
+    });
+})();
+
 /// MENU LATERAL RECOLHÍVEL ///
 function toggleSidebar() {
     const app = document.getElementById('appContainer');
@@ -1376,3 +1429,365 @@ document.addEventListener('DOMContentLoaded', () => {
         atualizarRolagem();
     }
 });
+
+/* === LÓGICA DA PÁGINA DE RELATÓRIOS === */
+document.addEventListener('DOMContentLoaded', () => {
+    const relRoot = document.getElementById('relatorios-root');
+    if (!relRoot) return;
+
+    const TIPOS = ['Consolidado de investimentos', 'Desempenho da carteira', 'Movimentações do período', 'Composição por classe'];
+    const CLIENTES = ['Todos os clientes', 'Ana Luiza Martins', 'Bernardo Oliveira', 'Camila Freire', 'Diego Nascimento', 'Elisa Montenegro', 'Felipe Santoro'];
+    const CARTEIRAS = ['Carteira consolidada', 'Renda fixa', 'Fundos', 'Ações'];
+    const ROTULOS = { concluido: 'Concluído', processando: 'Em processamento' };
+    const BADGE = { concluido: 'ativo', processando: 'analise' };
+
+    let relatorios = [
+        { id: 7, tipo: TIPOS[0], sub: 'Todos os clientes · Carteira consolidada', data: '28/09/2026 18:02', status: 'concluido', fmt: 'PDF' },
+        { id: 6, tipo: TIPOS[1], sub: 'Ana Luiza Martins · Renda fixa', data: '26/09/2026 17:15', status: 'concluido', fmt: 'PDF' },
+        { id: 5, tipo: TIPOS[2], sub: 'Todos os clientes · Carteira consolidada', data: '26/09/2026 15:10', status: 'concluido', fmt: 'XLSX' },
+        { id: 4, tipo: TIPOS[3], sub: 'Bernardo Oliveira · Fundos', data: '25/09/2026 10:08', status: 'concluido', fmt: 'PDF' },
+        { id: 3, tipo: TIPOS[1], sub: 'Camila Freire · Carteira consolidada', data: '24/09/2026 14:20', status: 'concluido', fmt: 'PDF' },
+        { id: 2, tipo: TIPOS[0], sub: 'Todos os clientes · Carteira consolidada', data: '15/09/2026 09:10', status: 'concluido', fmt: 'PDF' },
+        { id: 1, tipo: TIPOS[2], sub: 'Diego Nascimento · Ações', data: '10/09/2026 11:45', status: 'concluido', fmt: 'XLSX' }
+    ];
+
+    let tela = location.hash === '#gerar' ? 'gerar' : 'lista';
+    let filtroBusca = '';
+    let filtroStatus = 'todos';
+    let filtroTipo = 'todos';
+    let toastTimer = null;
+
+    const pad = (n) => String(n).padStart(2, '0');
+    const dataBR = (iso) => iso.split('-').reverse().join('/');
+    const agora = () => {
+        const d = new Date();
+        return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    };
+    const slug = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-');
+
+    const toastEl = document.createElement('div');
+    toastEl.className = 'rel-toast';
+    toastEl.setAttribute('role', 'status');
+    document.body.appendChild(toastEl);
+
+    function avisar(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);
+    }
+
+    function baixar(r) {
+        const linhas = [['Relatório', r.tipo], ['Abrangência', r.sub], ['Gerado em', r.data], ['Solicitante', 'Marina Costa']];
+        if (r.fmt === 'XLSX') {
+            const csv = '\uFEFF' + linhas.map((l) => l.join(';')).join('\n');
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+            a.download = slug(r.tipo) + '.csv';
+            a.click();
+            setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+            return;
+        }
+        const html = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>${r.tipo}</title>
+            <style>body{font-family:Inter,Arial,sans-serif;padding:40px;color:#1B0B2E}h1{margin:0 0 4px}td{padding:8px 16px 8px 0}</style></head>
+            <body><h1>${r.tipo}</h1><p>NEXUS · Aurora Wealth</p><table>
+            ${linhas.map((l) => `<tr><td><strong>${l[0]}</strong></td><td>${l[1]}</td></tr>`).join('')}
+            </table><script>window.onload=()=>window.print()<\/script></body></html>`;
+        const w = window.open('', '_blank');
+        if (w) { w.document.write(html); w.document.close(); }
+        else avisar('Libere os pop-ups para abrir o PDF.');
+    }
+
+    function atualizarBreadcrumb() {
+        const crumb = document.getElementById('breadcrumb-title');
+        if (crumb) crumb.textContent = tela === 'gerar' ? 'Gerar relatório' : 'Relatórios';
+        window.scrollTo({ top: 0 });
+    }
+
+    function atualizarTabela() {
+        const tbody = document.getElementById('rel-tbody');
+        const vazio = document.getElementById('rel-empty');
+        if (!tbody) return;
+
+        const filtrados = relatorios.filter((r) =>
+            (filtroStatus === 'todos' || r.status === filtroStatus) &&
+            (filtroTipo === 'todos' || r.tipo === filtroTipo) &&
+            (r.tipo + ' ' + r.sub).toLowerCase().includes(filtroBusca.trim().toLowerCase())
+        );
+
+        tbody.innerHTML = filtrados.map((r) => `
+            <tr>
+                <td><strong>${r.tipo}</strong><br /><small class="sub-text-dark">${r.sub}</small></td>
+                <td>${r.tipo}</td>
+                <td>${r.data}</td>
+                <td><span class="status-badge ${BADGE[r.status]}">${ROTULOS[r.status]}</span></td>
+                <td>${r.fmt}</td>
+                <td>
+                    <button type="button" class="icon-act" data-baixar="${r.id}" ${r.status === 'processando' ? 'disabled' : ''}>Baixar</button>
+                </td>
+            </tr>
+        `).join('');
+
+        vazio.style.display = filtrados.length === 0 ? 'block' : 'none';
+
+        tbody.querySelectorAll('[data-baixar]').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const item = relatorios.find((x) => x.id === Number(btn.dataset.baixar));
+                if (item) baixar(item);
+            });
+        });
+    }
+
+    function renderLista() {
+        const prontos = relatorios.filter((r) => r.status === 'concluido').length;
+        const proc = relatorios.length - prontos;
+        const abas = [['todos', 'Todos'], ['concluido', 'Concluídos'], ['processando', 'Processando']];
+
+        relRoot.innerHTML = `
+            <section class="app-screen active">
+                <div class="content-wrapper">
+                    <div class="page-title-row">
+                        <div>
+                            <h1>Relatórios</h1>
+                            <p class="section-desc">Gere, consulte e compartilhe os resultados dos investimentos.</p>
+                        </div>
+                        <button class="btn-pink-solid" id="btnNovoRelatorio">+ Novo relatório</button>
+                    </div>
+
+                    <div class="metrics-cards-grid" style="grid-template-columns: repeat(3, 1fr)">
+                        <div class="metric-card-dark">
+                            <span class="card-label-light">Histórico no período</span>
+                            <div class="metric-value-white">${pad(relatorios.length)}</div>
+                        </div>
+                        <div class="metric-card-light">
+                            <span class="card-label-dark">Prontos p/ download</span>
+                            <div class="metric-value-dark">${pad(prontos)}</div>
+                        </div>
+                        <div class="metric-card-light">
+                            <span class="card-label-dark">Em processamento</span>
+                            <div class="metric-value-dark">${pad(proc)}</div>
+                        </div>
+                    </div>
+
+                    <div class="toolbar-row">
+                        <label class="search-box">
+                            <input type="text" id="relBusca" placeholder="Buscar relatório ou cliente" autocomplete="off" value="${filtroBusca}" />
+                        </label>
+                        <div class="tabs-pill" id="relTabs">
+                            ${abas.map(([v, nome]) => `<button class="tab ${filtroStatus === v ? 'active' : ''}" data-status="${v}">${nome}</button>`).join('')}
+                        </div>
+                        <div class="select-wrapper">
+                            <select id="relFiltroTipo" aria-label="Filtrar por tipo">
+                                <option value="todos">Todos os tipos</option>
+                                ${TIPOS.map((t) => `<option value="${t}" ${filtroTipo === t ? 'selected' : ''}>${t}</option>`).join('')}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="positions-table-box v2">
+                        <div class="table-header-row">
+                            <div>
+                                <h3>Histórico de relatórios</h3>
+                                <span class="sub-text-dark">Relatórios gerados na sua conta, do mais recente ao mais antigo.</span>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="positions-table">
+                                <thead>
+                                    <tr><th>RELATÓRIO</th><th>TIPO</th><th>GERADO EM</th><th>STATUS</th><th>FORMATO</th><th>AÇÕES</th></tr>
+                                </thead>
+                                <tbody id="rel-tbody"></tbody>
+                            </table>
+                            <p class="empty-state" id="rel-empty" style="display:none">Nenhum relatório encontrado com esses filtros.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        document.getElementById('btnNovoRelatorio').addEventListener('click', () => {
+            tela = 'gerar';
+            render();
+        });
+
+        document.getElementById('relBusca').addEventListener('input', (e) => {
+            filtroBusca = e.target.value;
+            atualizarTabela();
+        });
+
+        document.querySelectorAll('#relTabs .tab').forEach((tab) => {
+            tab.addEventListener('click', () => {
+                filtroStatus = tab.dataset.status;
+                document.querySelectorAll('#relTabs .tab').forEach((t) => t.classList.remove('active'));
+                tab.classList.add('active');
+                atualizarTabela();
+            });
+        });
+
+        document.getElementById('relFiltroTipo').addEventListener('change', (e) => {
+            filtroTipo = e.target.value;
+            atualizarTabela();
+        });
+
+        atualizarTabela();
+    }
+
+    function renderGerar() {
+        const form = {
+            tipo: TIPOS[0], cliente: CLIENTES[0], carteira: CARTEIRAS[0],
+            inicio: '2026-09-01', fim: '2026-09-30', fmt: 'PDF', detalhe: true
+        };
+
+        relRoot.innerHTML = `
+            <section class="app-screen active">
+                <div class="content-wrapper">
+                    <div class="page-title-row">
+                        <div>
+                            <h1>Gerar relatório</h1>
+                            <p class="section-desc">Personalize os dados e prepare um novo relatório de investimentos.</p>
+                        </div>
+                        <button class="date-filter" id="btnVoltarRel">Voltar para relatórios</button>
+                    </div>
+
+                    <div class="rel-grid">
+                        <div>
+                            <div class="rel-card">
+                                <h3>Configuração do relatório</h3>
+                                <span class="sub-text-dark">Defina o conteúdo e a abrangência do documento.</span>
+                                <div class="rel-fields">
+                                    <div class="full">
+                                        <label for="relTipo">Tipo de relatório *</label>
+                                        <select id="relTipo">${TIPOS.map((t) => `<option>${t}</option>`).join('')}</select>
+                                    </div>
+                                    <div>
+                                        <label for="relCliente">Cliente *</label>
+                                        <select id="relCliente">${CLIENTES.map((c) => `<option>${c}</option>`).join('')}</select>
+                                    </div>
+                                    <div>
+                                        <label for="relCarteira">Carteira *</label>
+                                        <select id="relCarteira">${CARTEIRAS.map((c) => `<option>${c}</option>`).join('')}</select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rel-card">
+                                <h3>Período e formato</h3>
+                                <span class="sub-text-dark">Escolha o intervalo de análise e o formato do arquivo.</span>
+                                <div class="rel-fields">
+                                    <div>
+                                        <label for="relInicio">Data inicial *</label>
+                                        <input type="date" id="relInicio" value="${form.inicio}" />
+                                    </div>
+                                    <div>
+                                        <label for="relFim">Data final *</label>
+                                        <input type="date" id="relFim" value="${form.fim}" />
+                                    </div>
+                                    <div class="full fmt-opts">
+                                        <label class="fmt-opt">
+                                            <input type="radio" name="relFmt" value="PDF" checked />
+                                            <span><strong>PDF</strong><br /><small>Pronto para apresentação</small></span>
+                                        </label>
+                                        <label class="fmt-opt">
+                                            <input type="radio" name="relFmt" value="XLSX" />
+                                            <span><strong>XLSX</strong><br /><small>Dados para planilha</small></span>
+                                        </label>
+                                    </div>
+                                    <label class="full">
+                                        <input type="checkbox" id="relDetalhe" checked /> Incluir detalhamento de ativos e notas metodológicas
+                                    </label>
+                                </div>
+                                <div class="rel-erro" id="relErro" role="alert"></div>
+                            </div>
+                        </div>
+
+                        <aside>
+                            <div class="rel-resumo">
+                                <h3>Resumo do relatório</h3>
+                                <dl>
+                                    <dt>Relatório</dt><dd id="resTipo">${form.tipo}</dd>
+                                    <dt>Abrangência</dt><dd id="resAbrangencia">${form.cliente} · ${form.carteira}</dd>
+                                    <dt>Período</dt><dd id="resPeriodo">${dataBR(form.inicio)} a ${dataBR(form.fim)}</dd>
+                                    <dt>Formato</dt><dd id="resFormato">PDF · Com detalhamento</dd>
+                                    <dt>Solicitante</dt><dd>Marina Costa</dd>
+                                </dl>
+                            </div>
+                            <div class="rel-actions">
+                                <button class="date-filter" id="btnCancelarRel">Cancelar</button>
+                                <button class="btn-pink-solid" id="btnConfirmarRel">Confirmar e gerar</button>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        function atualizarResumo() {
+            form.tipo = document.getElementById('relTipo').value;
+            form.cliente = document.getElementById('relCliente').value;
+            form.carteira = document.getElementById('relCarteira').value;
+            form.inicio = document.getElementById('relInicio').value;
+            form.fim = document.getElementById('relFim').value;
+            form.fmt = document.querySelector('input[name="relFmt"]:checked').value;
+            form.detalhe = document.getElementById('relDetalhe').checked;
+
+            document.getElementById('resTipo').textContent = form.tipo;
+            document.getElementById('resAbrangencia').textContent = `${form.cliente} · ${form.carteira}`;
+            document.getElementById('resPeriodo').textContent = form.inicio && form.fim ? `${dataBR(form.inicio)} a ${dataBR(form.fim)}` : '—';
+            document.getElementById('resFormato').textContent = `${form.fmt}${form.detalhe ? ' · Com detalhamento' : ''}`;
+        }
+
+        ['relTipo', 'relCliente', 'relCarteira', 'relInicio', 'relFim', 'relDetalhe'].forEach((id) => {
+            document.getElementById(id).addEventListener('change', atualizarResumo);
+        });
+        document.querySelectorAll('input[name="relFmt"]').forEach((r) => r.addEventListener('change', atualizarResumo));
+
+        const voltar = () => { tela = 'lista'; render(); };
+        document.getElementById('btnVoltarRel').addEventListener('click', voltar);
+        document.getElementById('btnCancelarRel').addEventListener('click', voltar);
+
+        document.getElementById('btnConfirmarRel').addEventListener('click', () => {
+            const erroEl = document.getElementById('relErro');
+            if (!form.inicio || !form.fim) {
+                erroEl.textContent = 'Preencha a data inicial e a data final.';
+                return;
+            }
+            if (form.inicio > form.fim) {
+                erroEl.textContent = 'A data inicial não pode ser depois da data final.';
+                return;
+            }
+            erroEl.textContent = '';
+
+            const novo = {
+                id: Math.max(...relatorios.map((r) => r.id)) + 1,
+                tipo: form.tipo,
+                sub: `${form.cliente} · ${form.carteira}`,
+                data: agora(),
+                status: 'processando',
+                fmt: form.fmt
+            };
+            relatorios = [novo, ...relatorios];
+            tela = 'lista';
+            render();
+            avisar('Gerando relatório...');
+
+            setTimeout(() => {
+                relatorios = relatorios.map((r) => r.id === novo.id ? { ...r, status: 'concluido' } : r);
+                if (tela === 'lista') renderLista();
+                avisar('Relatório pronto! Clique em Baixar.');
+            }, 1800);
+        });
+    }
+
+    function render() {
+        atualizarBreadcrumb();
+        if (tela === 'gerar') renderGerar();
+        else renderLista();
+    }
+
+    const sair = document.getElementById('btnLogout');
+    if (sair) sair.addEventListener('click', () => { window.location.href = 'index.html'; });
+
+    render();
+});
+
+

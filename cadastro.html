@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS - Criar conta</title>
+    <title>Criar conta</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bonitinho.css">
     <link rel="stylesheet" href="auth-extras.css">
@@ -15,25 +15,25 @@
     <div class="login-split-container">
         <div class="login-left-pane">
             <div class="login-left-content">
-                <h1 class="login-title">Gestão financeira completa para sua empresa e para você.</h1>
+                <h1 class="login-title" data-intro>Gestão financeira completa para sua empresa e para você.</h1>
 
                 <div class="login-card-preview">
                     <ul class="benefit-list">
-                        <li class="benefit-item">
+                        <li class="benefit-item" data-intro>
                             <span class="benefit-icon">✓</span>
                             <div>
                                 <strong>Toda a operação em uma única visão</strong>
                                 <span>Fluxo de caixa, contas a pagar e a receber de CNPJs e CPFs, sem planilhas.</span>
                             </div>
                         </li>
-                        <li class="benefit-item">
+                        <li class="benefit-item" data-intro data-intro-delay="240">
                             <span class="benefit-icon">✓</span>
                             <div>
                                 <strong>Decisões baseadas em dados</strong>
                                 <span>Relatórios e indicadores em tempo real para acompanhar metas e a saúde financeira do negócio.</span>
                             </div>
                         </li>
-                        <li class="benefit-item">
+                        <li class="benefit-item" data-intro data-intro-delay="480">
                             <span class="benefit-icon">✓</span>
                             <div>
                                 <strong>Segurança de ponta a ponta</strong>
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="login-left-footer">
+            <div class="login-left-footer" data-intro data-intro-delay="720">
                 <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8.2-8 9-4.8-.8-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Ambiente protegido</span>
                 <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Dados criptografados</span>
                 <span style="display:inline-flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> Plataforma verificada</span>
@@ -53,7 +53,12 @@
 
         <div class="login-right-pane">
             <div class="login-form-header">
-                <span class="access-type">NOVA CONTA</span>
+                <div class="auth-header-brand">
+                    <a href="index.html" class="auth-logo" aria-label="Página inicial da NEXUS">
+                        <img src="assets/logo-s-fundo.png" alt="" class="logo-badge">
+                    </a>
+                    <span class="access-type">NOVA CONTA</span>
+                </div>
                 <a href="ajuda.html" class="help-link">Precisa de ajuda?</a>
             </div>
 
@@ -63,8 +68,8 @@
                     <a href="login.html" class="back-link">Voltar para o login</a>
 
                     <div class="form-intro">
-                        <h2>Crie sua conta.</h2>
-                        <p>Leva menos de 2 minutos. Organize as finanças da sua empresa e as suas em um só lugar.</p>
+                        <h2 data-intro>Crie sua conta.</h2>
+                        <p data-intro data-intro-delay="180">Leva menos de 2 minutos. Organize as finanças da sua empresa e as suas em um só lugar.</p>
                     </div>
 
                     <form id="formCadastro" class="auth-form" novalidate>
@@ -137,11 +142,11 @@
                         <button type="submit" class="btn-dark-submit">Criar minha conta <span class="arrow">→</span></button>
                     </form>
 
-                    <div class="register-redirect">
+                    <div class="register-redirect" data-intro>
                         <p>Já usa a NEXUS? <a href="login.html" class="pink-link">Entrar</a></p>
                     </div>
 
-                    <div class="security-alert-box">
+                    <div class="security-alert-box" data-intro data-intro-delay="180">
                         <p>A NEXUS nunca solicita senhas ou códigos por telefone, e-mail ou mensagens.</p>
                     </div>
                 </div>
@@ -165,7 +170,8 @@
         </div>
     </div>
 
-    <script src="autenticacao.js"></script>
+    <script src="funcionalidades.js"></script>
+    <script src="animacoes.js"></script>
 </body>
 
 </html>
